@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">TpApp</string>
+    <string name="text_accounts">todas cuentas</string>
+    <string name="pista_nombre">Name</string>
+    <string name="pista_email">Email</string>
+    <string name="pista_contrasena">Contraseña</string>
+    <string name="hint_confirm_password">Confirmar contraseña</string>
+    <string name="texto_login">Entrar</string>
+    <string name="texto_registrar">Registrarse</string>
+    <string name="texto_agregar_imagen">Agregar imagen</string>
+    <string name="texto_descripcion">Descripcion de tu imagen</string>
+    <string name="error_falta_nombre">Enter Full Name</string>
+    <string name="error_email_invalido">Enter Valid Email</string>
+    <string name="error_falta_edad">Enter Age</string>
+    <string name="error_falta_contrasena">Enter Password</string>
+    <string name="registro_existoso">Registration Successful</string>
+    <string name="texto_sin_cuenta">Sin cuenta?cree una</string>
+    <string name="texto_ya_es_miembro">Ya es miembro? Entre</string>
+    <string name="error_email_usado">Email en uso</string>
+    <string name="error_contrasena_distinta">Contraseñas no coinciden</string>
+    <string name="error_usuario_incorrecto">Contraseña o usuario incorrectos</string>
+    <string name="action_settings1">ajustes</string>
+    <string name="action_settings2">mi perfil</string>
+    <string name="action_settings3">contactos</string>
+    <string name="action_settings4">agregar foto</string>
+    <string name="action_settings5">salir</string>
+    <string name="texto_hola">Hola</string>
+    <string name="texto_titulo">Android Tutorials Hub</string>
+
+
+
+
+</resources>
