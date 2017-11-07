@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/buscar"
+        android:icon="@drawable/buscar"
+
+        android:title="buscar"
+        app:showAsAction="always"/>
+    <item android:id="@+id/contactos"
+        android:icon="@drawable/contactos"
+
+        android:title="contactos"
+        app:showAsAction="always"/>
+    <item android:id="@+id/agregarmomento"
+        android:icon="@drawable/agregarmomento"
+
+        android:title="agregarmomento"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/perfil"
+        android:icon="@drawable/perfil"
+
+        android:title="mi perfil"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/salir"
+        android:icon="@drawable/salir"
+
+        android:title="salir"
+        app:showAsAction="ifRoom"/>
+
+
+</menu>
