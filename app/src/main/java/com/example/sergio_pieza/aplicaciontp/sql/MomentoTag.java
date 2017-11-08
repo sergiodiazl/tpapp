@@ -3,27 +3,17 @@ package com.example.sergio_pieza.aplicaciontp.sql;
 /**
  * Created by sergio-pieza on 05/11/2017.
  */
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Index;
-import android.arch.persistence.room.PrimaryKey;
 
-
-@Entity(indices={@Index(value={"momento_id"}),@Index(value={"tag_id"})},foreignKeys = {
-        @ForeignKey(entity =Momento.class,
-                parentColumns = "id_m",
-                childColumns = "momento_id"),
-
-        @ForeignKey(entity = Tag.class,
-                parentColumns = "id_t",
-                childColumns = "tag_id")},tableName = "momentotag")
 public class MomentoTag {
-    public @PrimaryKey (autoGenerate = true) int id_mt;
-    @ColumnInfo(name="momento_id")
+    public  int id_mt;
     public String momento_id;
-    @ColumnInfo(name="tag_id")
     public String tag_Id;
+
+    public MomentoTag(int id_mt, String momento_id, String tag_Id) {
+        this.id_mt = id_mt;
+        this.momento_id = momento_id;
+        this.tag_Id = tag_Id;
+    }
 
     public int getId_mt() {
         return id_mt;

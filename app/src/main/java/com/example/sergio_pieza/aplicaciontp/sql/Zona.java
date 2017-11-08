@@ -21,6 +21,11 @@ public class Zona {
         return id_z;
     }
 
+    public Zona(int id_z, String nombre_z) {
+        this.id_z = id_z;
+        this.nombre_z = nombre_z;
+    }
+
     public void setId_z(int id_z) {
         this.id_z = id_z;
     }

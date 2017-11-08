@@ -3,44 +3,43 @@ package com.example.sergio_pieza.aplicaciontp.sql;
 /**
  * Created by sergio-pieza on 06/11/2017.
  */
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Ignore;
-import android.arch.persistence.room.Index;
-import android.arch.persistence.room.PrimaryKey;
-import android.arch.persistence.room.TypeConverters;
 
-import java.util.List;
-@Entity(indices={@Index(value={"usuario_id"},unique=true)},
-        foreignKeys = { @ForeignKey(entity = Usuario.class,
-                parentColumns = "id",
-                childColumns = "usuario_id")
-        },tableName = "contactos"
-)
+
+
+
 public class Contactos {
 
-    public @PrimaryKey (autoGenerate = true)int id_c;
-    @Ignore
-    public List<Usuario> lista;
-    @ColumnInfo(name="usuario_id")
-    public int usuario_id;
-    public int getId(){
+    public int id_c;
+    public int seguidor_id;
+    public int seguido_id;
+
+    public Contactos(int id_c, int seguidor_id, int seguido_id) {
+        this.id_c = id_c;
+        this.seguidor_id = seguidor_id;
+        this.seguido_id = seguido_id;
+    }
+
+    public int getId_c() {
         return id_c;
     }
-    public void setId(int id){
-        this.id_c =id;
+
+    public void setId_c(int id_c) {
+        this.id_c = id_c;
     }
-    public List<Usuario>getLista(){
-        return lista;
+
+    public int getSeguidor_id() {
+        return seguidor_id;
     }
-    public void setLista(List<Usuario> lista){
-        this.lista=lista;
+
+    public void setSeguidor_id(int seguidor_id) {
+        this.seguidor_id = seguidor_id;
     }
-    public int getUsuarioId(){
-        return usuario_id;
+
+    public int getSeguido_id() {
+        return seguido_id;
     }
-    public void setUsuarioId(int id){
-        this.id_c =usuario_id;
+
+    public void setSeguido_id(int seguido_id) {
+        this.seguido_id = seguido_id;
     }
 }

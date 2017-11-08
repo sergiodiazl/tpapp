@@ -1,50 +1,47 @@
 package com.example.sergio_pieza.aplicaciontp.sql;
 
+import java.util.Date;
+
 /**
  * Created by sergio-pieza on 05/11/2017.
  */
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.ForeignKey;
-import android.arch.persistence.room.Index;
-import android.arch.persistence.room.PrimaryKey;
-import android.arch.persistence.room.TypeConverters;
 
-import java.util.Date;
-
-@Entity(indices = {@Index(value={"usuario_id"}),@Index(value={"zona_id"}),@Index(value={"mt_id"})},foreignKeys ={ @ForeignKey(entity = Usuario.class,
-        parentColumns = "id",
-        childColumns = "usuario_id"),@ForeignKey(entity = Zona.class,
-        parentColumns = "id_z",
-        childColumns = "zona_id"),@ForeignKey(entity = MomentoTag.class,
-        parentColumns = "id_mt",
-        childColumns = "mt_id")},tableName = "momento")
-@TypeConverters(DateConverter.class)
 public class Momento {
-    public @PrimaryKey (autoGenerate = true)int id_m;
-    public String descripcion_m;
+    public int id_m;
+    public String descripcion;
     public Date fecha;
     public String imagen;//ruta de imagen
-    public String lugar;//coordenadas json transformado a string
-
-    @ColumnInfo(name = "usuario_id")
+    public float latitud;
+    public float longitud;
     public int usuario_Id;
 
-    @ColumnInfo(name = "zona_id")
     public int zona_id;
-    @ColumnInfo(name = "mt_id")
-    public int mt_id;
+
+    public Momento(int id_m, String descripcion, Date fecha, String imagen, float latitud, float longitud, int usuario_Id, int zona_id) {
+        this.id_m = id_m;
+        this.descripcion = descripcion;
+        this.fecha = fecha;
+        this.imagen = imagen;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.usuario_Id = usuario_Id;
+        this.zona_id = zona_id;
+    }
 
     public int getId_m() {
         return id_m;
     }
 
-    public String getDescripcion_m() {
-        return descripcion_m;
+    public void setId_m(int id_m) {
+        this.id_m = id_m;
     }
 
-    public void setDescripcion_m(String descripcion_m) {
-        this.descripcion_m = descripcion_m;
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public Date getFecha() {
@@ -63,12 +60,20 @@ public class Momento {
         this.imagen = imagen;
     }
 
-    public String getLugar() {
-        return lugar;
+    public float getLatitud() {
+        return latitud;
     }
 
-    public void setLugar(String lugar) {
-        this.lugar = lugar;
+    public void setLatitud(float latitud) {
+        this.latitud = latitud;
+    }
+
+    public float getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(float longitud) {
+        this.longitud = longitud;
     }
 
     public int getUsuario_Id() {
@@ -85,9 +90,5 @@ public class Momento {
 
     public void setZona_id(int zona_id) {
         this.zona_id = zona_id;
-    }
-
-    public void setId_m(int id_m) {
-        this.id_m = id_m;
     }
 }

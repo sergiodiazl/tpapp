@@ -22,13 +22,16 @@ import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 public interface ZonaDao {
 
     @Query("SELECT * FROM zona WHERE id_z = :id ")
-    public Zona tagPorId(int id);
-
+    public Zona zonaPorId(int id);
+    @Query("SELECT * FROM zona ")
+    public List<Zona> todas();
     @Query("SELECT * FROM zona WHERE nombre_z = :nombre ")
     public Zona zonaPorNombre(String nombre);
 
     @Insert(onConflict = IGNORE)
     void insertarZona(Zona zona);
+    @Insert(onConflict = IGNORE)
+    void insertarTodo(Zona... zonas);
 
     @Update(onConflict = REPLACE)
     void updateZona(Zona zona);

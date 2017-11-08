@@ -23,9 +23,19 @@ public class HomeActivity extends AppCompatActivity {
                         getSupportFragmentManager());
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(myPagerAdapter);
-
+        //asignar los iconos a las pestañas
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+         int[] iconos = {
+                R.drawable.home,
+                R.drawable.contactos,
+                R.drawable.perfil
+        };
+        tabLayout.setupWithViewPager(viewPager);
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            tabLayout.getTabAt(i).setIcon(iconos[i]);
+        }//aca termina la asigancion d iconos
+
     }
 }
 

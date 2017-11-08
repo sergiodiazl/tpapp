@@ -11,10 +11,17 @@ import android.arch.persistence.room.RoomDatabase;
 public abstract class Db extends RoomDatabase {
     private static Db INSTANCE;
 
-    public abstract UsuarioDao usuarioModel();
-    public abstract MomentoDao momentoModel();
-    public abstract MomentoTagDao momentoTagModel();
-    public abstract TagDao tagModel();
-    public abstract ZonaDao zonaModel();
+    public abstract UsuarioDao usuarioDao();
+    public abstract MomentoDao momentoDao();
+    public abstract MomentoTagDao momentoTagDao();
+    public abstract TagDao tagDao();
+    public abstract ZonaDao zonaDao();
+    public static Db getDb (Context context){
+        if( INSTANCE==null){
+            Room.databaseBuilder(context.getApplicationContext(),Db.class,"db").build();
+
+        }
+        return INSTANCE;
+    }
 
 }
