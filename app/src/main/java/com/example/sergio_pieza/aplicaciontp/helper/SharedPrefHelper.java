@@ -38,7 +38,7 @@ public class SharedPrefHelper {
 
     //method to let the user login
     //this method will store the user data in shared preferences
-    public void userLogin(Usuario usuario {
+    public void userLogin(Usuario usuario ){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(miPref, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(usuario_id, usuario.getId());
@@ -63,7 +63,7 @@ public class SharedPrefHelper {
                 sharedPreferences.getString(usuario_nombre, null),
                 sharedPreferences.getString(usuario_contrasena, null),
                 sharedPreferences.getString(usuario_email, null),
-                sharedPreferences.getInt(zona_id, 1);
+                sharedPreferences.getInt(zona_id, 1)
         );
     }
 

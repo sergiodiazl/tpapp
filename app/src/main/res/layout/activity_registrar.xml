@@ -33,13 +33,29 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <EditText
-                    android:id="@+id/emailLogin"
+                    android:id="@+id/emailRegistrar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
-                    android:inputType="textEmailAddress"
+                    android:hint="email"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/nombreRegistrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="nombre"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
                     android:maxLines="1"
                     android:singleLine="true" />
 
@@ -50,34 +66,56 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/passLogin"
+                    android:id="@+id/passwordRegistrar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="contraseña"
+
+                    android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <EditText
+                android:id="@+id/password2Registrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="repite contraseña"
 
+                android:imeActionLabel="@string/action_sign_in_short"
+                android:imeOptions="actionUnspecified"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true" />
+            <Spinner
+                android:id="@+id/spinnerRegistrar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></Spinner>
             <Button
-                android:id="@+id/botonLogin"
+                android:id="@+id/botonRegistrar"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/action_sign_in"
+                android:text="registrar tu cuenta"
                 android:textStyle="bold" />
             <Button
-                android:id="@+id/botonARegistrar"
+                android:id="@+id/botonALogin"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="sin cuenta?registrate"
+                android:text="tienes cuenta?inicia sesion"
                 android:textStyle="bold" />
+        </android.support.design.widget.TextInputLayout>
+
 
         </LinearLayout>
+
     </ScrollView>
 </LinearLayout>

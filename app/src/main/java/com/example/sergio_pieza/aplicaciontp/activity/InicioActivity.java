@@ -15,16 +15,14 @@ import android.arch.lifecycle.LifecycleActivity;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.sergio_pieza.aplicaciontp.R;
-import com.example.sergio_pieza.aplicaciontp.sql.Db;
 
 public class InicioActivity extends AppCompatActivity {
-    Db db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-       db = Room.databaseBuilder(getApplicationContext(),
-                Db.class, "db").build();
+
       // logeado();
     }
 
