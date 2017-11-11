@@ -3,7 +3,7 @@ package com.example.sergio_pieza.aplicaciontp.activity;
 /**
  * Created by sergio-pieza on 06/11/2017.
  */
-import android.arch.persistence.room.Room;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 
-import android.arch.lifecycle.LifecycleActivity;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.sergio_pieza.aplicaciontp.R;

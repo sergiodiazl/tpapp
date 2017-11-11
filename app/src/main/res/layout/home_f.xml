@@ -4,15 +4,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/button"
+    <FrameLayout
+        android:id="@+id/home_placeholder"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </FrameLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/botonASubirMomento"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"

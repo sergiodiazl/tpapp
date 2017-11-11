@@ -1,5 +1,6 @@
 package com.example.sergio_pieza.aplicaciontp.sql;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -9,15 +10,15 @@ import java.util.Date;
 public class Momento {
     public int id_m;
     public String descripcion;
-    public Date fecha;
+    public String fecha; //cambiartipo a date
     public String imagen;//ruta de imagen
-    public float latitud;
-    public float longitud;
+    public double latitud;
+    public double longitud;
     public int usuario_Id;
 
     public int zona_id;
-
-    public Momento(int id_m, String descripcion, Date fecha, String imagen, float latitud, float longitud, int usuario_Id, int zona_id) {
+    //!cambiar a date! //
+    public Momento(int id_m, String descripcion, String  fecha, String imagen, double latitud, double longitud, int usuario_Id, int zona_id) {
         this.id_m = id_m;
         this.descripcion = descripcion;
         this.fecha = fecha;
@@ -27,7 +28,14 @@ public class Momento {
         this.usuario_Id = usuario_Id;
         this.zona_id = zona_id;
     }
+    public static ArrayList<Momento> ejemplo(int crear){
+        ArrayList<Momento> ejemplo=new ArrayList<Momento>();
+        for(int i =1;i<=crear;i++){
+            ejemplo.add(new Momento(2,"esto es un ejemplo","2017/11/10","https://pbs.twimg.com/media/C6KGhKtWcAAM8vk.jpg"	,-34.775654710652965,-58.26765665433351,1,2));
 
+        }
+            return ejemplo;
+    }
     public int getId_m() {
         return id_m;
     }
@@ -44,13 +52,7 @@ public class Momento {
         this.descripcion = descripcion;
     }
 
-    public Date getFecha() {
-        return fecha;
-    }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
 
     public String getImagen() {
         return imagen;
@@ -60,19 +62,23 @@ public class Momento {
         this.imagen = imagen;
     }
 
-    public float getLatitud() {
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public double getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(float latitud) {
+    public void setLatitud(double latitud) {
         this.latitud = latitud;
     }
 
-    public float getLongitud() {
+    public double getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(float longitud) {
+    public void setLongitud(double longitud) {
         this.longitud = longitud;
     }
 

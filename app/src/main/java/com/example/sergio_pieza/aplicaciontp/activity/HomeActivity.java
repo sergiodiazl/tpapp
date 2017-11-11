@@ -4,13 +4,13 @@ package com.example.sergio_pieza.aplicaciontp.activity;
  * Created by sergio-pieza on 06/11/2017.
  */
 import android.os.Bundle;
-
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.design.widget.TabLayout;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.adapter.MyPagerAdapter;
 
+import android.support.v4.app.FragmentTransaction;
 public class HomeActivity extends AppCompatActivity {
 
     @Override

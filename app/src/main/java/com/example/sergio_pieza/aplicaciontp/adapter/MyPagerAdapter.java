@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.sergio_pieza.aplicaciontp.fragment.ContactosF;
 import com.example.sergio_pieza.aplicaciontp.fragment.HomeF;
+import com.example.sergio_pieza.aplicaciontp.fragment.ListaMomentoF;
 import com.example.sergio_pieza.aplicaciontp.fragment.PerfilF;
 
 /**
@@ -22,7 +23,7 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
         Fragment fragment;
         switch(i) {
             case 0:
-                fragment = new HomeF();
+                fragment = new HomeF();//cambiar a homef()
                 break;
             case 1:
                 fragment = new ContactosF();
