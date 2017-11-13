@@ -16,8 +16,9 @@ import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 /**
- * Created by sergio-pieza on 11/11/2017.
+ * Created by Belal on 10/24/2017.
  */
+
 public class VolleyMultipartRequest extends Request<NetworkResponse> {
 
     private final String twoHyphens = "--";
@@ -188,7 +189,7 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
         dataOutputStream.writeBytes(lineEnd);
     }
 
-    class DataPart {
+    protected class DataPart {
         private String fileName;
         private byte[] content;
         private String type;
@@ -196,7 +197,7 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
         public DataPart() {
         }
 
-        DataPart(String name, byte[] data) {
+        public DataPart(String name, byte[] data) {
             fileName = name;
             content = data;
         }

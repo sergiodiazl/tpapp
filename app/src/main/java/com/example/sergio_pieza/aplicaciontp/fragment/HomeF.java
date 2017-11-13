@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.support.v4.app.FragmentManager;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.activity.LoginActivity;
+import com.example.sergio_pieza.aplicaciontp.activity.SubirMomento;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,7 +39,7 @@ public class HomeF extends Fragment {
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.home_placeholder, new ListaMomentoF());
         ft.commit();
-            String imagenUrl="http://www.islabit.com/wp-content/uploads/2017/09/Android.png";
+
 
         subir=(FloatingActionButton)view.findViewById(R.id.botonASubirMomento);
         subir.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +58,7 @@ public class HomeF extends Fragment {
     }
     public void aSubirMomento(){
 
-        startActivity(new Intent(this.getActivity(),LoginActivity.class));
+        startActivity(new Intent(this.getActivity(),SubirMomento.class));
         return;
     }
 }
