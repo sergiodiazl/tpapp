@@ -1,17 +1,28 @@
 package com.example.sergio_pieza.aplicaciontp.activity;
 
 import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -30,6 +41,9 @@ import com.android.volley.toolbox.Volley;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.Volley.VolleyMultipartRequest;
 import com.example.sergio_pieza.aplicaciontp.helper.Api;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -39,16 +53,39 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SubirMomento extends AppCompatActivity {
-    ImageView imagenV ;EditText eDescrip;Button boton;
+public class SubirMomento extends AppCompatActivity
+
+        {
+    double latitud, longitud;
+    ImageView imagenV;
+    EditText eDescrip;
+    Button boton;
+    FloatingActionButton fabAHome;
+    //cliente de googlpe play p la ubciacion
+    private GoogleApiClient mGoogleApiClient;
+    //codigos para las peticiones de permisos
+static final int COARSE_LOCATION =1;
+
+    //ubicacion
+    private LocationManager locationManager;
+    private String provider;
+
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //vistas
+
         setContentView(R.layout.activity_subir_momento);
-        imagenV=(ImageView)findViewById(R.id.iSubirImagen);
-        eDescrip=(EditText)findViewById(R.id.dSubirImagen);
-        boton=(Button)findViewById(R.id.botonSubirImagen);
-        //verifica los permisos de lctura
+        imagenV = (ImageView) findViewById(R.id.iSubirImagen);
+        eDescrip = (EditText) findViewById(R.id.dSubirImagen);
+        boton = (Button) findViewById(R.id.botonSubirImagen);
+        fabAHome=(FloatingActionButton)findViewById(R.id.fabAHome);
+        ActivityCompat.requestPermissions(this, new String[]
+                {android.Manifest.permission.ACCESS_FINE_LOCATION}, COARSE_LOCATION);
+
+           //verifica los permisos de lctura
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -60,14 +97,71 @@ public class SubirMomento extends AppCompatActivity {
     }boton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    buildAlertMessageNoGps();
+
+                } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+                    getLocation();
+                    Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(i, 100);
+                }
                 //abre para elegir la imagen
-                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(i, 100);
+
+
+            }
+        });
+        fabAHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                aHome();
             }
         });
 
 }
+            private void getLocation() {
+                if (ActivityCompat.checkSelfPermission(SubirMomento.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                        != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
+                        (SubirMomento.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
+                    ActivityCompat.requestPermissions(SubirMomento.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, COARSE_LOCATION);
+
+                } else {
+                    Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+                    if (location != null) {
+                        latitud= location.getLatitude();
+                        longitud = location.getLongitude();
+                        String lat = String.valueOf(latitud);
+                        String lon = String.valueOf(latitud);
+
+                         Log.d("gps","Your current location is"+ "\n" + "Lattitude = " + lat
+                                + "\n" + "Longitude = " + lon);
+                    }else{
+                        Toast.makeText(this,"Unble to Trace your location",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            protected void buildAlertMessageNoGps() {
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Please Turn ON your GPS Connection")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(final DialogInterface dialog, final int id) {
+                                startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(final DialogInterface dialog, final int id) {
+                                dialog.cancel();
+                            }
+                        });
+                final AlertDialog alert = builder.create();
+                alert.show();
+            }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -91,15 +185,6 @@ public class SubirMomento extends AppCompatActivity {
         }
     }
 
-    /*
-    * The method is taking Bitmap as an argument
-    * then it will return the byte[] array for the given bitmap
-    * and we will send this array to the server
-    * here we are using PNG Compression with 80% quality
-    * you can give quality between 0 to 100
-    * 0 means worse quality
-    * 100 means best quality
-    * */
     public byte[] getFileDataFromDrawable(Bitmap bitmap) {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
@@ -144,8 +229,8 @@ public class SubirMomento extends AppCompatActivity {
                 params.put("descripcion",descripcion );
                 params.put("usuario_id",String.valueOf(1));
                 params.put("zona_id",String.valueOf(1));//llammar a un metodo para conseguir el id de zona usuario
-                params.put("latitud",String.valueOf(13.22));//llamar metodo para obtener la lat/olong
-                params.put("longitud",String.valueOf(13.22));
+                params.put("latitud",String.valueOf(latitud));//llamar metodo para obtener la lat/olong
+                params.put("longitud",String.valueOf(longitud));
                 Log.d("paramteros string:",String.valueOf(params));
                 return params;
             }
@@ -167,6 +252,13 @@ public class SubirMomento extends AppCompatActivity {
         Volley.newRequestQueue(this).add(volleyMultipartRequest);
         Toast.makeText(getApplicationContext(),"Momento subido correctamente,podes subir otro o volver al inicio", Toast.LENGTH_SHORT).show();
     }
-}
+
+
+            private void aHome(){
+                finish();
+                startActivity(new Intent(this,HomeActivity.class));
+                return;
+            }
+        }
 
 

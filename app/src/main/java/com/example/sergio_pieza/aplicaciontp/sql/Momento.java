@@ -18,7 +18,7 @@ public class Momento {
 
     public int zona_id;
     //!cambiar a date! //
-    public Momento(int id_m, String descripcion, String  fecha, String imagen, double latitud, double longitud, int usuario_Id, int zona_id) {
+    public Momento(int id_m,  String imagen,  String  fecha,String descripcion,double latitud, double longitud, int usuario_Id, int zona_id) {
         this.id_m = id_m;
         this.descripcion = descripcion;
         this.fecha = fecha;
@@ -31,7 +31,7 @@ public class Momento {
     public static ArrayList<Momento> ejemplo(int crear){
         ArrayList<Momento> ejemplo=new ArrayList<Momento>();
         for(int i =1;i<=crear;i++){
-            ejemplo.add(new Momento(2,"esto es un ejemplo","2017/11/10","https://pbs.twimg.com/media/C6KGhKtWcAAM8vk.jpg"	,-34.775654710652965,-58.26765665433351,1,2));
+          //  ejemplo.add(new Momento(2,"esto es un ejemplo","2017/11/10","https://pbs.twimg.com/media/C6KGhKtWcAAM8vk.jpg"	,-34.775654710652965,-58.26765665433351,1,2));
 
         }
             return ejemplo;
@@ -84,6 +84,10 @@ public class Momento {
 
     public int getUsuario_Id() {
         return usuario_Id;
+    }
+
+    public String getFecha() {
+        return fecha;
     }
 
     public void setUsuario_Id(int usuario_Id) {

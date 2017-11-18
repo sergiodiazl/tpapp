@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.design.widget.TabLayout;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.adapter.MyPagerAdapter;
+import com.example.sergio_pieza.aplicaciontp.fragment.HomeF;
 
 import android.support.v4.app.FragmentTransaction;
 public class HomeActivity extends AppCompatActivity {
@@ -37,5 +38,6 @@ public class HomeActivity extends AppCompatActivity {
         }//aca termina la asigancion d iconos
 
     }
+
 }
 

@@ -1,5 +1,7 @@
 package com.example.sergio_pieza.aplicaciontp.adapter;
 
+
+
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,9 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.fragment.ListaMomentoF;
 import com.example.sergio_pieza.aplicaciontp.sql.Momento;
@@ -24,18 +30,19 @@ import java.util.List;
 public class MomentoAdapter extends
         RecyclerView.Adapter<MomentoAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView id,imagen,descripcion;
+        public TextView id,descripcion;
+        public ImageView imagen;
         public ViewHolder(View vista){
             super(vista);
             id=(TextView)vista.findViewById(R.id.idMomento);
             descripcion=(TextView)vista.findViewById(R.id.descripcionMomento);
-            imagen=(TextView)vista.findViewById(R.id.imagenMomento);
+            imagen=(ImageView) vista.findViewById(R.id.imagenMomento);
         }
 
     }
     private List<Momento>momentos;
     private Context mContext;
-    public MomentoAdapter(Context context,List<Momento>lista){
+    public MomentoAdapter(Context context, List<Momento>lista){
         momentos=lista;
         mContext=context;
     }
@@ -65,12 +72,14 @@ public class MomentoAdapter extends
         int textoId=m.getId_m();
         viewHolder.id.setText(String.valueOf(textoId));
         viewHolder.descripcion.setText(m.getDescripcion());
-        viewHolder.imagen.setText(m.getImagen());
-
+        Glide.with(mContext).load(m.getImagen()).placeholder(R.drawable.imagen)
+                .diskCacheStrategy(DiskCacheStrategy.ALL).fitCenter()
+                .override(500,500).into(viewHolder.imagen);
     }
     @Override
     public int getItemCount() {
-        return momentos.size();
+        return momentos!=null ? momentos.size():0;
     }
 
 }
+

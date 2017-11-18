@@ -1,5 +1,7 @@
 package com.example.sergio_pieza.aplicaciontp.fragment;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -7,16 +9,22 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.support.v4.app.FragmentManager;
+import android.widget.Toast;
+
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.activity.LoginActivity;
 import com.example.sergio_pieza.aplicaciontp.activity.SubirMomento;
+import com.example.sergio_pieza.aplicaciontp.adapter.MomentoAdapter;
+import com.example.sergio_pieza.aplicaciontp.helper.SharedPrefHelper;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +36,8 @@ import java.net.URL;
  */
 
 public class HomeF extends Fragment {
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,6 +66,43 @@ public class HomeF extends Fragment {
         inflater.inflate(R.menu.home, menu);
         return;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int boton =item.getItemId();
+        if (boton ==R.id.salir){
+            cerrarSesion();
+            return true;
+        }
+        if(boton==R.id.buscar){
+            return  true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void cerrarSesion(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+        alertDialogBuilder.setMessage("Queres cerrar sesión");
+                alertDialogBuilder.setPositiveButton("si",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+
+                                SharedPrefHelper.getInstance(getActivity()).logout();
+                            }
+                        });
+
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
+
     public void aSubirMomento(){
 
         startActivity(new Intent(this.getActivity(),SubirMomento.class));

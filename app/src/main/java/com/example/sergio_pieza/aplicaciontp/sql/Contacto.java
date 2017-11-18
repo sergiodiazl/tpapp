@@ -7,13 +7,13 @@ package com.example.sergio_pieza.aplicaciontp.sql;
 
 
 
-public class Contactos {
+public class Contacto {
 
     public int id_c;
     public int seguidor_id;
     public int seguido_id;
 
-    public Contactos(int id_c, int seguidor_id, int seguido_id) {
+    public Contacto(int id_c, int seguidor_id, int seguido_id) {
         this.id_c = id_c;
         this.seguidor_id = seguidor_id;
         this.seguido_id = seguido_id;
