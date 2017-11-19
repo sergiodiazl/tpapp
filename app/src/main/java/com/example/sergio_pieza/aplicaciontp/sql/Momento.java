@@ -1,5 +1,6 @@
 package com.example.sergio_pieza.aplicaciontp.sql;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,7 +8,7 @@ import java.util.Date;
  * Created by sergio-pieza on 05/11/2017.
  */
 
-public class Momento {
+public class Momento  implements Serializable{
     public int id_m;
     public String descripcion;
     public String fecha; //cambiartipo a date
@@ -17,6 +18,7 @@ public class Momento {
     public int usuario_Id;
 
     public int zona_id;
+    private static final long serialVersionUID = 8799656478674716638L;
     //!cambiar a date! //
     public Momento(int id_m,  String imagen,  String  fecha,String descripcion,double latitud, double longitud, int usuario_Id, int zona_id) {
         this.id_m = id_m;

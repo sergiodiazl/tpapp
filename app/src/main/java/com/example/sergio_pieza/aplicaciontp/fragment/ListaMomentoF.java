@@ -1,6 +1,8 @@
 package com.example.sergio_pieza.aplicaciontp.fragment;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,10 +21,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.Volley.VolleySingleton;
+import com.example.sergio_pieza.aplicaciontp.activity.MomentoDetalleActivity;
 import com.example.sergio_pieza.aplicaciontp.adapter.MomentoAdapter;
 import com.example.sergio_pieza.aplicaciontp.fragment.dummy.DummyContent;
 import com.example.sergio_pieza.aplicaciontp.fragment.dummy.DummyContent.DummyItem;
 import com.example.sergio_pieza.aplicaciontp.helper.Api;
+import com.example.sergio_pieza.aplicaciontp.helper.RecyclerViewClickListener;
 import com.example.sergio_pieza.aplicaciontp.helper.SharedPrefHelper;
 import com.example.sergio_pieza.aplicaciontp.sql.Momento;
 import com.example.sergio_pieza.aplicaciontp.sql.MomentoDao;
@@ -54,9 +58,12 @@ public class ListaMomentoF extends Fragment {
     ArrayList<Momento> momentos=new ArrayList<Momento>();
     RecyclerView rv;
     MomentoAdapter mAdapter;
-
+    private RecyclerViewClickListener listenerRecycler;
+    private OnMomentoSelectedListener listenerSelect;
     public ListaMomentoF() {
     }
+
+
 
 
     @Override
@@ -72,7 +79,18 @@ public class ListaMomentoF extends Fragment {
         View view = inflater.inflate(R.layout.fragment_momento_list, container, false);
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.listaMomentos);
         rv.setHasFixedSize(true);
-        mAdapter = new MomentoAdapter(this.getContext(), momentos);
+         listenerRecycler = (vistaListener, position) -> {
+            //Toast.makeText(getContext(), "Position " + position, Toast.LENGTH_SHORT).show();
+            Momento momentoElegido =momentos.get(position);
+           listenerSelect.onItemSelected(momentoElegido);
+
+          //  Toast.makeText(getContext(), "Position " + momentoElegido.getDescripcion(), Toast.LENGTH_SHORT).show();
+          //  Intent iDetalle=new Intent(getActivity(),MomentoDetalleActivity.class);
+           // iDetalle.putExtra("momento",momentoElegido);
+           // startActivity(iDetalle);
+
+        };
+        mAdapter = new MomentoAdapter(this.getContext(), momentos,listenerRecycler);
         rv.setAdapter(mAdapter);
         // Set the adapter
         LinearLayoutManager llm = new LinearLayoutManager((getActivity()));
@@ -162,7 +180,24 @@ public class ListaMomentoF extends Fragment {
          * >Communicating with Other Fragments</a> for more information.
          */
         VolleySingleton.getInstance(getActivity()).addToRequestQueue(postRequest);
+
+
         return view;
     }
 
+    public interface OnMomentoSelectedListener {
+        public void onItemSelected(Momento m);
+    }
+
+    @Override
+    public void onAttach(Context activity) {
+        super.onAttach(activity);
+        if (activity instanceof OnMomentoSelectedListener) {
+            listenerSelect= (OnMomentoSelectedListener) activity;
+        } else {
+            throw new ClassCastException(
+                    activity.toString()
+                            + " must implement ItemsListFragment.OnListItemSelectedListener");
+        }
+    }
 }

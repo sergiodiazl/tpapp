@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v7.widget.CardView;
@@ -18,6 +19,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.fragment.ListaMomentoF;
+
+import com.example.sergio_pieza.aplicaciontp.helper.RecyclerViewClickListener;
 import com.example.sergio_pieza.aplicaciontp.sql.Momento;
 
 import java.util.ArrayList;
@@ -29,22 +32,33 @@ import java.util.List;
 
 public class MomentoAdapter extends
         RecyclerView.Adapter<MomentoAdapter.ViewHolder> {
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    private RecyclerViewClickListener mListener;
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
         public TextView id,descripcion;
         public ImageView imagen;
-        public ViewHolder(View vista){
+        public Button boton;
+        public ViewHolder(View vista,RecyclerViewClickListener listener){
             super(vista);
             id=(TextView)vista.findViewById(R.id.idMomento);
             descripcion=(TextView)vista.findViewById(R.id.descripcionMomento);
             imagen=(ImageView) vista.findViewById(R.id.imagenMomento);
+            boton=(Button)vista.findViewById(R.id.botonVerDetalleMomento);
+            boton.setOnClickListener(this);
+
+        }
+        @Override
+        public void onClick(View view) {
+            mListener.onClick(view, getAdapterPosition());
         }
 
     }
     private List<Momento>momentos;
     private Context mContext;
-    public MomentoAdapter(Context context, List<Momento>lista){
+    public MomentoAdapter(Context context, List<Momento>lista,RecyclerViewClickListener listener){
         momentos=lista;
         mContext=context;
+        mListener=listener;
     }
     private Context getContext(){
         return mContext;
@@ -55,10 +69,10 @@ public class MomentoAdapter extends
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
-        View contactView = inflater.inflate(R.layout.fragment_momento, parent, false);
+        View vistaMomento = inflater.inflate(R.layout.fragment_momento, parent, false);
 
         // Return a new holder instance
-        ViewHolder viewHolder = new ViewHolder(contactView);
+        ViewHolder viewHolder = new ViewHolder(vistaMomento,mListener);
         return viewHolder;
     }
     // Involves populating data into the item through holder

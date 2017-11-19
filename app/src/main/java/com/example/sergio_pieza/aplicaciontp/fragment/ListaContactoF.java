@@ -77,6 +77,7 @@ public class ListaContactoF extends Fragment {
         int idU = uActual.getId();
         ContactoDao cDao=new ContactoDao(getActivity());
         cu=cDao.contactosUsuario(idU);
+
         mAdapter = new UsuarioAdapter(this.getContext(), cu);
         rv.setAdapter(mAdapter);
         // Set the adapter

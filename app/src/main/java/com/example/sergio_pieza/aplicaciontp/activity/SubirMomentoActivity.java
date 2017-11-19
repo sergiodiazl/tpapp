@@ -6,25 +6,19 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -41,19 +35,14 @@ import com.android.volley.toolbox.Volley;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.Volley.VolleyMultipartRequest;
 import com.example.sergio_pieza.aplicaciontp.helper.Api;
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationServices;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SubirMomento extends AppCompatActivity
+public class SubirMomentoActivity extends AppCompatActivity
 
         {
     double latitud, longitud;
@@ -121,11 +110,11 @@ static final int COARSE_LOCATION =1;
 
 }
             private void getLocation() {
-                if (ActivityCompat.checkSelfPermission(SubirMomento.this, Manifest.permission.ACCESS_FINE_LOCATION)
+                if (ActivityCompat.checkSelfPermission(SubirMomentoActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
                         != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission
-                        (SubirMomento.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        (SubirMomentoActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-                    ActivityCompat.requestPermissions(SubirMomento.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, COARSE_LOCATION);
+                    ActivityCompat.requestPermissions(SubirMomentoActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, COARSE_LOCATION);
 
                 } else {
                     Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);

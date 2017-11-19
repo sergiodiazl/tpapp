@@ -3,6 +3,7 @@ package com.example.sergio_pieza.aplicaciontp.activity;
 /**
  * Created by sergio-pieza on 06/11/2017.
  */
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +11,14 @@ import android.support.design.widget.TabLayout;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.adapter.MyPagerAdapter;
 import com.example.sergio_pieza.aplicaciontp.fragment.HomeF;
+import com.example.sergio_pieza.aplicaciontp.fragment.ListaMomentoF;
+import com.example.sergio_pieza.aplicaciontp.helper.RecyclerViewClickListener;
+import com.example.sergio_pieza.aplicaciontp.sql.Momento;
 
 import android.support.v4.app.FragmentTransaction;
-public class HomeActivity extends AppCompatActivity {
+import android.view.View;
+
+public class HomeActivity extends AppCompatActivity implements ListaMomentoF.OnMomentoSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,5 +45,16 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
+
+
+
+
+    @Override
+    public void onItemSelected(Momento m) {
+          Intent iDetalle=new Intent(this,MomentoDetalleActivity.class);
+         iDetalle.putExtra("momento",m);
+         startActivity(iDetalle);
+
+    }
 }
 

@@ -54,8 +54,6 @@ public ArrayList<Usuario> contactosUsuario(int id) {
         String p3=cursor.getString(2);//
         String p4=cursor.getString(3);
         int p5 =cursor.getInt(4);
-        Log.d("nombre",p2);
-        Log.d("email",p3);
         Usuario usuario=new Usuario(p1,p2,p3,p4,p5);
         cu.add(usuario);}
         return cu;}

@@ -1,10 +1,7 @@
 package com.example.sergio_pieza.aplicaciontp.fragment;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -16,26 +13,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.support.v4.app.FragmentManager;
-import android.widget.Toast;
 
 import com.example.sergio_pieza.aplicaciontp.R;
-import com.example.sergio_pieza.aplicaciontp.activity.LoginActivity;
-import com.example.sergio_pieza.aplicaciontp.activity.SubirMomento;
-import com.example.sergio_pieza.aplicaciontp.adapter.MomentoAdapter;
+import com.example.sergio_pieza.aplicaciontp.activity.SubirMomentoActivity;
 import com.example.sergio_pieza.aplicaciontp.helper.SharedPrefHelper;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
+import com.example.sergio_pieza.aplicaciontp.sql.Momento;
 
 /**
  * Created by sergio-pieza on 06/11/2017.
  */
 
-public class HomeF extends Fragment {
+public class HomeF extends Fragment implements ListaMomentoF.OnMomentoSelectedListener{
 
 
     @Override
@@ -105,8 +94,13 @@ public class HomeF extends Fragment {
 
     public void aSubirMomento(){
 
-        startActivity(new Intent(this.getActivity(),SubirMomento.class));
+        startActivity(new Intent(this.getActivity(),SubirMomentoActivity.class));
         return;
+    }
+
+    @Override
+    public void onItemSelected(Momento m) {
+
     }
 }
 
