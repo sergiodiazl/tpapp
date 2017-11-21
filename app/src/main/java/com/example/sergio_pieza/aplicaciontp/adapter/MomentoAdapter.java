@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.support.v7.widget.CardView;
@@ -31,8 +33,11 @@ import java.util.List;
  */
 
 public class MomentoAdapter extends
-        RecyclerView.Adapter<MomentoAdapter.ViewHolder> {
+        RecyclerView.Adapter<MomentoAdapter.ViewHolder> implements Filterable{
     private RecyclerViewClickListener mListener;
+    private List<Momento>momentos;
+    private List<Momento>momentosFiltrados;
+    private Context mContext;
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView id,descripcion;
@@ -52,11 +57,12 @@ public class MomentoAdapter extends
             mListener.onClick(view, getAdapterPosition());
         }
 
+
     }
-    private List<Momento>momentos;
-    private Context mContext;
+
     public MomentoAdapter(Context context, List<Momento>lista,RecyclerViewClickListener listener){
         momentos=lista;
+        momentosFiltrados=lista;//exp 1
         mContext=context;
         mListener=listener;
     }
@@ -79,8 +85,8 @@ public class MomentoAdapter extends
     @Override
     public void onBindViewHolder(MomentoAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-        Momento m = momentos.get(position);
-
+       // Momento m = momentos.get(position);original
+        Momento m = momentosFiltrados.get(position);//filtradp ex´3
         // Set item views based on your views and data model
 
         int textoId=m.getId_m();
@@ -92,8 +98,37 @@ public class MomentoAdapter extends
     }
     @Override
     public int getItemCount() {
-        return momentos!=null ? momentos.size():0;
+        //return momentos!=null ? momentos.size():0;
+        return momentosFiltrados!=null ? momentosFiltrados.size():0;//exp2
     }
+    @Override//metodo de filtereable exp 4
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence busqueda) {
+                String busquedaString =busqueda.toString();
+                if(busquedaString.isEmpty()){
+                    momentosFiltrados=momentos;//momentos originales sin filtrar
+                }else{
+                    ArrayList<Momento>listaFiltrados=new ArrayList<>();
+                    for(Momento momentoAFiltrar :momentos){
+                        if(momentoAFiltrar.getDescripcion().toLowerCase().contains(busquedaString)){
+                            listaFiltrados.add(momentoAFiltrar);
+                        }
+                    }momentosFiltrados=listaFiltrados;
+                }
+                FilterResults resultadosFiltro = new FilterResults();
+                resultadosFiltro.values = momentosFiltrados;
+                return resultadosFiltro;
+            }
 
+            @Override
+            protected void publishResults(CharSequence busqueda, FilterResults resultados) {
+                momentosFiltrados=(ArrayList<Momento>)resultados.values;
+                notifyDataSetChanged();
+
+            }
+        };
+    }
 }
 

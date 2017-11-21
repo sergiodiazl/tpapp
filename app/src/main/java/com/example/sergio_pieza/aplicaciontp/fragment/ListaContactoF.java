@@ -1,13 +1,18 @@
 package com.example.sergio_pieza.aplicaciontp.fragment;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -84,6 +89,48 @@ public class ListaContactoF extends Fragment {
         LinearLayoutManager llm = new LinearLayoutManager((getActivity()));
         rv.setLayoutManager(llm);
         return view;
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    {
+        inflater.inflate(R.menu.home, menu);
+        return;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int boton =item.getItemId();
+        if (boton ==R.id.salir){
+            cerrarSesion();
+            return true;
+        }
+        if(boton==R.id.buscar){
+            return  true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void cerrarSesion(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+        alertDialogBuilder.setMessage("Queres cerrar sesión");
+        alertDialogBuilder.setPositiveButton("si",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                        SharedPrefHelper.getInstance(getActivity()).logout();
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
 }

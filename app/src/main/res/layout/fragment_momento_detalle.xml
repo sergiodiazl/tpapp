@@ -12,7 +12,8 @@
         <ImageView
             android:id="@+id/imagenMomentoDetalle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            />
 
         <TextView
             android:id="@+id/usuarioMomentoDetalle"
@@ -46,10 +47,11 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem"
-            android:layout_below="@+id/latitudMomentoDetalle"
+            android:layout_toRightOf="@+id/latitudMomentoDetalle"
+            android:layout_below="@+id/descripcionMomentoDetalle"
             />
         <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView"
+            android:id="@+id/mapaMomentoDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -57,7 +59,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="83dp"
             android:layout_marginEnd="77dp"
-            android:layout_marginRight="77dp" />
+            android:layout_marginRight="77dp"
+            android:layout_below="@+id/latitudMomentoDetalle"/>
     </RelativeLayout>
 
 </FrameLayout>

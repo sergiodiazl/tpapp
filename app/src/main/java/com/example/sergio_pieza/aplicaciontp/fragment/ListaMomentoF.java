@@ -2,17 +2,25 @@ package com.example.sergio_pieza.aplicaciontp.fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -54,7 +62,6 @@ public class ListaMomentoF extends Fragment {
      * fragment (e.g. upon screen orientation changes).
      */
     Usuario uActual = SharedPrefHelper.getInstance(getActivity()).getUser();
-
     ArrayList<Momento> momentos=new ArrayList<Momento>();
     RecyclerView rv;
     MomentoAdapter mAdapter;
@@ -62,20 +69,17 @@ public class ListaMomentoF extends Fragment {
     private OnMomentoSelectedListener listenerSelect;
     public ListaMomentoF() {
     }
-
-
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setHasOptionsMenu(true);//indica q tiene menu
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);//indica q tiene menu
         View view = inflater.inflate(R.layout.fragment_momento_list, container, false);
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.listaMomentos);
         rv.setHasFixedSize(true);
@@ -83,17 +87,11 @@ public class ListaMomentoF extends Fragment {
             //Toast.makeText(getContext(), "Position " + position, Toast.LENGTH_SHORT).show();
             Momento momentoElegido =momentos.get(position);
            listenerSelect.onItemSelected(momentoElegido);
-
-          //  Toast.makeText(getContext(), "Position " + momentoElegido.getDescripcion(), Toast.LENGTH_SHORT).show();
-          //  Intent iDetalle=new Intent(getActivity(),MomentoDetalleActivity.class);
-           // iDetalle.putExtra("momento",momentoElegido);
-           // startActivity(iDetalle);
-
         };
-        mAdapter = new MomentoAdapter(this.getContext(), momentos,listenerRecycler);
+        mAdapter = new MomentoAdapter(this.getActivity(), momentos,listenerRecycler);
         rv.setAdapter(mAdapter);
         // Set the adapter
-        LinearLayoutManager llm = new LinearLayoutManager((getActivity()));
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
 
         MomentoDao mDao = new MomentoDao(getActivity());
@@ -185,6 +183,70 @@ public class ListaMomentoF extends Fragment {
         return view;
     }
 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    {
+        inflater.inflate(R.menu.home, menu);
+        MenuItem buscarAction=menu.findItem(R.id.buscar);
+        SearchView vistaBuscar=(SearchView) MenuItemCompat.getActionView(buscarAction);
+        buscar(vistaBuscar);
+        return;
+    }
+
+    private void buscar(SearchView vistaBuscar) {
+
+        vistaBuscar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                mAdapter.getFilter().filter(newText);
+                return true;
+            }
+        });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int boton =item.getItemId();
+        if (boton ==R.id.salir){
+            cerrarSesion();
+            return true;
+        }
+        if(boton==R.id.buscar){
+            return  true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void cerrarSesion(){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+        alertDialogBuilder.setMessage("Queres cerrar sesión");
+        alertDialogBuilder.setPositiveButton("si",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+
+                        SharedPrefHelper.getInstance(getActivity()).logout();
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
+    }
     public interface OnMomentoSelectedListener {
         public void onItemSelected(Momento m);
     }
@@ -197,7 +259,7 @@ public class ListaMomentoF extends Fragment {
         } else {
             throw new ClassCastException(
                     activity.toString()
-                            + " must implement ItemsListFragment.OnListItemSelectedListener");
+                            + " hay que implementar onMomentoSelectedlistener");
         }
     }
 }

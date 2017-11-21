@@ -22,7 +22,7 @@
         <activity
             android:name=".activity.InicioActivity"
             android:label="@string/app_name" />
-        <activity android:name=".activity.HomeActivity"></activity>
+        <activity android:name=".activity.HomeActivity"> </activity>
         <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,6 +42,13 @@
             android:name=".activity.MomentoDetalleActivity"
             android:label="@string/title_activity_momento_detalle"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".activity.BuscarUsuarioActivity" >
+
+        </activity>
     </application>
+
+    <uses-feature
+        android:glEsVersion="0x0020000"
+        android:required="true"/>
 
 </manifest>

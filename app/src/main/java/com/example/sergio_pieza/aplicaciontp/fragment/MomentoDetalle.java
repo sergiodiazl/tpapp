@@ -3,6 +3,7 @@ package com.example.sergio_pieza.aplicaciontp.fragment;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,14 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.sql.Momento;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,10 +32,11 @@ import com.example.sergio_pieza.aplicaciontp.sql.Momento;
  * Use the {@link MomentoDetalle#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MomentoDetalle extends Fragment {
+public class MomentoDetalle extends Fragment implements OnMapReadyCallback{
 
 Momento  momento;
-
+GoogleMap gmap;
+MapView mapa;
 
 
     public MomentoDetalle() {
@@ -47,9 +57,7 @@ Momento  momento;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         momento=(Momento)getArguments().getSerializable("momento");
-        if (getArguments() != null) {
 
-        }
     }
 
     @Override
@@ -59,13 +67,45 @@ Momento  momento;
         TextView usuario =(TextView)vista.findViewById(R.id.usuarioMomentoDetalle);
         TextView descripcion =(TextView)vista.findViewById(R.id.descripcionMomentoDetalle);
         ImageView imagen =(ImageView)vista.findViewById(R.id.imagenMomentoDetalle);
-
-        usuario.setText(String.valueOf(momento.getUsuario_Id()));
+        TextView latitud =(TextView)vista.findViewById(R.id.latitudMomentoDetalle);
+        TextView longitud =(TextView)vista.findViewById(R.id.longitudMomentoDetalle);
+        String latString=String.valueOf(momento.getLatitud());
+        String lonString=String.valueOf(momento.getLongitud());
+        String uString=String.valueOf(momento.getUsuario_Id());
+        usuario.setText(uString);
+        latitud.setText(latString);
+        longitud.setText(lonString);
         descripcion.setText(momento.getDescripcion());
         Glide.with(getActivity()).load(momento.getImagen()).placeholder(R.drawable.imagen)
                 .diskCacheStrategy(DiskCacheStrategy.ALL).fitCenter()
                 .override(500,500).into(imagen);
         return vista;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mapa=(MapView)view.findViewById(R.id.mapaMomentoDetalle);
+        if(mapa !=null){
+            mapa.onCreate(null);
+            mapa.onResume();
+            mapa.getMapAsync(this);
+
+        }
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        MapsInitializer.initialize(getContext());
+        LatLng lugar=new LatLng(momento.getLatitud(),momento.getLongitud());
+        gmap=googleMap;
+        googleMap.setMapType(googleMap.MAP_TYPE_NORMAL);
+        googleMap.addMarker(
+                new MarkerOptions().position(lugar)
+        );
+        CameraPosition camara=CameraPosition.builder().target(lugar).zoom(16).bearing(0).tilt(20).build();
+        googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(camara));
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
