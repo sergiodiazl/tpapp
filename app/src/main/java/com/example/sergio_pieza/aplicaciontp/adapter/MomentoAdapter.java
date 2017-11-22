@@ -24,6 +24,7 @@ import com.example.sergio_pieza.aplicaciontp.fragment.ListaMomentoF;
 
 import com.example.sergio_pieza.aplicaciontp.helper.RecyclerViewClickListener;
 import com.example.sergio_pieza.aplicaciontp.sql.Momento;
+import com.example.sergio_pieza.aplicaciontp.sql.UsuarioDao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -89,8 +90,10 @@ public class MomentoAdapter extends
         Momento m = momentosFiltrados.get(position);//filtradp ex´3
         // Set item views based on your views and data model
 
-        int textoId=m.getId_m();
-        viewHolder.id.setText(String.valueOf(textoId));
+        int idUsuario=m.getUsuario_Id();
+        UsuarioDao uDao= new UsuarioDao(mContext);
+        String nombre=uDao.nombrePorId(idUsuario);
+        viewHolder.id.setText(nombre);
         viewHolder.descripcion.setText(m.getDescripcion());
         Glide.with(mContext).load(m.getImagen()).placeholder(R.drawable.imagen)
                 .diskCacheStrategy(DiskCacheStrategy.ALL).fitCenter()

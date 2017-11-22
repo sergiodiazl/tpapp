@@ -2,6 +2,7 @@ package com.example.sergio_pieza.aplicaciontp.sql;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -48,6 +49,13 @@ public class UsuarioDao {
         values.put ("zona_id",usuario.getZona_id());
         long result =database.update("usuario",values,idIgual,new String[] { String.valueOf(usuario.getId()) });
         return result;
+    }
+    public String nombrePorId(int id){
+        String query="SELECT nombre FROM usuario WHERE usuario_id=?";
+        Cursor cursor=database.rawQuery(query,new String[] { String.valueOf(id) });
+        cursor.moveToFirst();
+        String nombre=cursor.getString(0);
+        return nombre;
     }
     }
 
