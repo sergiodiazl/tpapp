@@ -35,6 +35,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.Volley.VolleyMultipartRequest;
 import com.example.sergio_pieza.aplicaciontp.helper.Api;
+import com.example.sergio_pieza.aplicaciontp.helper.SharedPrefHelper;
+import com.example.sergio_pieza.aplicaciontp.sql.Usuario;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.io.ByteArrayOutputStream;
@@ -42,9 +44,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SubirMomentoActivity extends AppCompatActivity
+public class SubirMomentoActivity extends AppCompatActivity{
 
-        {
     double latitud, longitud;
     ImageView imagenV;
     EditText eDescrip;
@@ -54,7 +55,7 @@ public class SubirMomentoActivity extends AppCompatActivity
     private GoogleApiClient mGoogleApiClient;
     //codigos para las peticiones de permisos
 static final int COARSE_LOCATION =1;
-
+   Usuario uActual= SharedPrefHelper.getInstance(this).getUser();
     //ubicacion
     private LocationManager locationManager;
     private String provider;
@@ -213,11 +214,13 @@ static final int COARSE_LOCATION =1;
             * */
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
+                String uId=String.valueOf(uActual.getId());
+                String zId=String.valueOf(uActual.getZona_id());
                 Map<String, String> params = new HashMap<>();
                 params.put("funcion","subirMomento");
                 params.put("descripcion",descripcion );
-                params.put("usuario_id",String.valueOf(1));
-                params.put("zona_id",String.valueOf(1));//llammar a un metodo para conseguir el id de zona usuario
+                params.put("usuario_id",uId);
+                params.put("zona_id",zId);//llammar a un metodo para conseguir el id de zona usuario
                 params.put("latitud",String.valueOf(latitud));//llamar metodo para obtener la lat/olong
                 params.put("longitud",String.valueOf(longitud));
                 Log.d("paramteros string:",String.valueOf(params));
@@ -239,7 +242,7 @@ static final int COARSE_LOCATION =1;
 
         //adding the request to volley
         Volley.newRequestQueue(this).add(volleyMultipartRequest);
-        Toast.makeText(getApplicationContext(),"Momento subido correctamente,podes subir otro o volver al inicio", Toast.LENGTH_SHORT).show();
+
     }
 
 

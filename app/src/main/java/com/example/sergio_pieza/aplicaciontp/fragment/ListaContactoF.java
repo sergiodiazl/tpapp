@@ -82,7 +82,7 @@ public class ListaContactoF extends Fragment {
         int idU = uActual.getId();
         ContactoDao cDao=new ContactoDao(getActivity());
         cu=cDao.contactosUsuario(idU);
-
+        setHasOptionsMenu(true);
         mAdapter = new UsuarioAdapter(this.getContext(), cu);
         rv.setAdapter(mAdapter);
         // Set the adapter
@@ -90,13 +90,15 @@ public class ListaContactoF extends Fragment {
         rv.setLayoutManager(llm);
         return view;
     }
+
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
-        inflater.inflate(R.menu.home, menu);
+        menu.clear();
+        inflater.inflate(R.menu.contactos, menu);
         return;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int boton =item.getItemId();
@@ -104,7 +106,7 @@ public class ListaContactoF extends Fragment {
             cerrarSesion();
             return true;
         }
-        if(boton==R.id.buscar){
+        if(boton==R.id.buscarContacto){
             return  true;
         }
         return super.onOptionsItemSelected(item);
@@ -132,5 +134,7 @@ public class ListaContactoF extends Fragment {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
+
+
 
 }

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "410474275686",
+    "firebase_url": "https://tpappmovil.firebaseio.com",
+    "project_id": "tpappmovil",
+    "storage_bucket": "tpappmovil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:410474275686:android:0f1ea20ca32f9989",
+        "android_client_info": {
+          "package_name": "com.example.sergio_pieza.aplicaciontp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "410474275686-n3udsbnll90pghhvmiltg4n9u33a6s0l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKLiXZa7jGR4DtVmjpAzbgLbVB7Fy0_sg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

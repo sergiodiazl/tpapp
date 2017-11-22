@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,14 +16,19 @@ import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.sql.Momento;
 import com.example.sergio_pieza.aplicaciontp.sql.Usuario;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by sergio-pieza on 18/11/2017.
  */
 
-public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.ViewHolder> {
-public class ViewHolder extends RecyclerView.ViewHolder{
+public class UsuarioAdapter extends RecyclerView.Adapter<UsuarioAdapter.ViewHolder> implements Filterable{
+
+    private List<Usuario> usuarios;
+    private List<Usuario> usuariosFiltrados;
+    private Context mContext;
+    public class ViewHolder extends RecyclerView.ViewHolder{
     public TextView nombre,email,zona;
 
     public ViewHolder(View vista){
@@ -32,10 +39,10 @@ public class ViewHolder extends RecyclerView.ViewHolder{
     }
 
 }
-    private List<Usuario> usuarios;
-    private Context mContext;
+
     public UsuarioAdapter(Context context, List<Usuario>lista){
        usuarios=lista;
+        usuariosFiltrados=lista;
         mContext=context;
     }
     private Context getContext(){
@@ -57,7 +64,7 @@ public class ViewHolder extends RecyclerView.ViewHolder{
     @Override
     public void onBindViewHolder(UsuarioAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-        Usuario u = usuarios.get(position);
+        Usuario u = usuariosFiltrados.get(position);
 
         // Set item views based on your views and data model
 
@@ -68,8 +75,37 @@ public class ViewHolder extends RecyclerView.ViewHolder{
     }
     @Override
     public int getItemCount() {
-        return usuarios!=null ? usuarios.size():0;
+        return usuariosFiltrados!=null ? usuariosFiltrados.size():0;
     }
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence busqueda) {
+                String busquedaString =busqueda.toString();
+                if(busquedaString.isEmpty()){
+                    usuariosFiltrados=usuarios;//momentos originales sin filtrar
+                }else{
+                    ArrayList<Usuario> listaFiltrados=new ArrayList<>();
+                    for(Usuario usuarioAFiltrar :usuarios){
+                        if(usuarioAFiltrar.getNombre().toLowerCase().contains(busquedaString)
+                                ||usuarioAFiltrar.getEmail().toLowerCase().contains(busquedaString)   ){
+                            listaFiltrados.add(usuarioAFiltrar);
+                        }
+                    }usuariosFiltrados=listaFiltrados;
+                }
+                FilterResults resultadosFiltro = new FilterResults();
+                resultadosFiltro.values = usuariosFiltrados;
+                return resultadosFiltro;
+            }
 
+            @Override
+            protected void publishResults(CharSequence busqueda, FilterResults resultados) {
+                usuariosFiltrados=(ArrayList<Usuario>)resultados.values;
+                notifyDataSetChanged();
+
+            }
+        };
+    }
 }
 

@@ -35,7 +35,7 @@ public class ContactosF extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        setHasOptionsMenu(true);
+
         FragmentManager fm = getActivity().getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.contactos_placeholder, new ListaContactoF());
@@ -45,49 +45,6 @@ public class ContactosF extends Fragment implements View.OnClickListener {
         botonBuscarUsuarios=(Button)vista.findViewById(R.id.botonBuscarUsuarios);
         botonBuscarUsuarios.setOnClickListener(this);
         return vista;
-    }
-
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
-    {
-        inflater.inflate(R.menu.contactos, menu);
-        return;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int boton =item.getItemId();
-        if (boton ==R.id.salir){
-            cerrarSesion();
-            return true;
-        }
-        if(boton==R.id.buscarContacto){
-            return  true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void cerrarSesion(){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-        alertDialogBuilder.setMessage("Queres cerrar sesión");
-        alertDialogBuilder.setPositiveButton("si",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-
-                        SharedPrefHelper.getInstance(getActivity()).logout();
-                    }
-                });
-
-        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
     }
 
 

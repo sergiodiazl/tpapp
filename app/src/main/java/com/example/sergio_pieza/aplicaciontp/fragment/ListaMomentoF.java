@@ -1,10 +1,13 @@
 package com.example.sergio_pieza.aplicaciontp.fragment;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
@@ -67,12 +70,20 @@ public class ListaMomentoF extends Fragment {
     MomentoAdapter mAdapter;
     private RecyclerViewClickListener listenerRecycler;
     private OnMomentoSelectedListener listenerSelect;
+    private final int permisoEscribir =2;
     public ListaMomentoF() {
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);//indica q tiene menu
+
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE},permisoEscribir);//Method of Fragment
+
+        } else {
+            Log.e("DB", "PERMISSION GRANTED");
+        }
 
     }
 
@@ -187,6 +198,7 @@ public class ListaMomentoF extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
+        menu.clear();
         inflater.inflate(R.menu.home, menu);
         MenuItem buscarAction=menu.findItem(R.id.buscar);
         SearchView vistaBuscar=(SearchView) MenuItemCompat.getActionView(buscarAction);
