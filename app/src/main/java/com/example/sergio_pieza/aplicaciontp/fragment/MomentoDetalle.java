@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,6 +72,7 @@ MapView mapa;
         ImageView imagen =(ImageView)vista.findViewById(R.id.imagenMomentoDetalle);
         TextView latitud =(TextView)vista.findViewById(R.id.latitudMomentoDetalle);
         TextView longitud =(TextView)vista.findViewById(R.id.longitudMomentoDetalle);
+        TextView fecha=(TextView)vista.findViewById(R.id.fechaMomentoDetalle);
         TextView zona =(TextView)vista.findViewById(R.id.zonaMomentoDetalle);
         String latString=String.valueOf(momento.getLatitud());
         String lonString=String.valueOf(momento.getLongitud());
@@ -85,6 +87,7 @@ MapView mapa;
         longitud.setText(lonString);
         zona.setText(nombreZona);
         descripcion.setText(momento.getDescripcion());
+        fecha.setText(momento.getFecha());
         Glide.with(getActivity()).load(momento.getImagen()).placeholder(R.drawable.imagen)
                 .diskCacheStrategy(DiskCacheStrategy.ALL).fitCenter()
                 .override(500,500).into(imagen);
@@ -117,7 +120,6 @@ MapView mapa;
 
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
 
 
 

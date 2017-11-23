@@ -57,6 +57,14 @@ public ArrayList<Usuario> contactosUsuario(int id) {
         Usuario usuario=new Usuario(p1,p2,p3,p4,p5);
         cu.add(usuario);}
         return cu;}
-
+public boolean esContacto(int id1,int id2){
+            String query="SELECT contacto_id FROM `contacto` WHERE  seguidor_id=? and seguido_id =?";
+            Cursor cursor=database.rawQuery(query,new String[]{String.valueOf(id1),String.valueOf(id2)});
+            if(cursor.getCount()>0){
+                return true;
+            }else{
+                return false;
+            }
+}
 }
 

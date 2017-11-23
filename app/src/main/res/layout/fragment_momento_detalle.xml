@@ -12,53 +12,125 @@
         <ImageView
             android:id="@+id/imagenMomentoDetalle"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/cartelUsuarioMomentoDetalle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            />
+            android:layout_below="@+id/imagenMomentoDetalle"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@string/cartelUsuarioMomentoDetalle"
+            android:textAppearance="?attr/textAppearanceListItem" />
 
         <TextView
             android:id="@+id/usuarioMomentoDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem"
             android:layout_below="@+id/imagenMomentoDetalle"
-            />
+            android:layout_margin="@dimen/text_margin"
+            android:layout_toRightOf="@+id/cartelUsuarioMomentoDetalle"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
+        <TextView
+            android:id="@+id/cartelDescripcionMomentoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/usuarioMomentoDetalle"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@string/cartelDescripcionMomentoDetalle"
+            android:textAppearance="?attr/textAppearanceListItem" />
 
         <TextView
             android:id="@+id/descripcionMomentoDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/usuarioMomentoDetalle"
             android:layout_margin="@dimen/text_margin"
+            android:layout_toRightOf="@+id/cartelDescripcionMomentoDetalle"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
+        <TextView
+            android:id="@+id/cartelFechaMomentoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cartelDescripcionMomentoDetalle"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@string/cartelFechaMomentoDetalle"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
+        <TextView
+            android:id="@+id/fechaMomentoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/descripcionMomentoDetalle"
+            android:layout_toRightOf="@+id/cartelFechaMomentoDetalle"
             android:textAppearance="?attr/textAppearanceListItem"
-    android:layout_below="@+id/usuarioMomentoDetalle"
+
             />
+
+        <TextView
+            android:id="@+id/cartelLatitudMomentoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cartelFechaMomentoDetalle"
+            android:layout_margin="@dimen/text_margin"
+            android:text="@string/cartelLatitudMomentoDetalle"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
         <TextView
             android:id="@+id/latitudMomentoDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:layout_below="@+id/descripcionMomentoDetalle"
+            android:layout_alignBaseline="@+id/cartelLatitudMomentoDetalle"
+            android:layout_alignBottom="@+id/cartelLatitudMomentoDetalle"
+            android:layout_toEndOf="@+id/cartelLatitudMomentoDetalle"
+            android:layout_toRightOf="@+id/cartelLatitudMomentoDetalle"
 
-            />
+            android:textAppearance="?attr/textAppearanceListItem" />
+
+        <TextView
+            android:id="@+id/cartelLongitudMomentoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cartelFechaMomentoDetalle"
+            android:layout_margin="@dimen/text_margin"
+            android:layout_toRightOf="@+id/latitudMomentoDetalle"
+            android:text="@string/cartelLongitudMomentoDetalle"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
         <TextView
             android:id="@+id/longitudMomentoDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/cartelLongitudMomentoDetalle"
+            android:layout_alignBottom="@+id/cartelLongitudMomentoDetalle"
+
+            android:layout_toEndOf="@+id/cartelLongitudMomentoDetalle"
+            android:layout_toRightOf="@+id/cartelLongitudMomentoDetalle"
+
+            android:textAppearance="?attr/textAppearanceListItem" />
+
+        <TextView
+            android:id="@+id/cartelZonaMomentoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cartelLatitudMomentoDetalle"
             android:layout_margin="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:layout_toRightOf="@+id/latitudMomentoDetalle"
-            android:layout_below="@+id/descripcionMomentoDetalle"
-            />
+            android:text="@string/cartelZonaMomentoDetalle"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
         <TextView
             android:id="@+id/zonaMomentoDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin"
-            android:textAppearance="?attr/textAppearanceListItem"
-            android:layout_toRightOf="@+id/longitudMomentoDetalle"
-            android:layout_below="@+id/descripcionMomentoDetalle"
-            />
+            android:layout_alignBaseline="@+id/cartelZonaMomentoDetalle"
+            android:layout_alignBottom="@+id/cartelZonaMomentoDetalle"
+
+            android:layout_toEndOf="@+id/cartelLatitudMomentoDetalle"
+            android:layout_toRightOf="@+id/cartelLatitudMomentoDetalle"
+            android:textAppearance="?attr/textAppearanceListItem" />
+
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapaMomentoDetalle"
             android:layout_width="wrap_content"
@@ -66,10 +138,10 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:layout_below="@+id/cartelZonaMomentoDetalle"
             android:layout_marginBottom="83dp"
             android:layout_marginEnd="77dp"
-            android:layout_marginRight="77dp"
-            android:layout_below="@+id/latitudMomentoDetalle"/>
+            android:layout_marginRight="77dp" />
     </RelativeLayout>
 
 </FrameLayout>

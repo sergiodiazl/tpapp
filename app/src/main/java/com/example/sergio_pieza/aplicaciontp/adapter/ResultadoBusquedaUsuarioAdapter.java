@@ -1,18 +1,22 @@
 package com.example.sergio_pieza.aplicaciontp.adapter;
 
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.sergio_pieza.aplicaciontp.R;
+import com.example.sergio_pieza.aplicaciontp.helper.SharedPrefHelper;
+import com.example.sergio_pieza.aplicaciontp.sql.ContactoDao;
 import com.example.sergio_pieza.aplicaciontp.sql.Usuario;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by sergio-pieza on 20/11/2017.
@@ -21,12 +25,14 @@ import java.util.List;
 public class ResultadoBusquedaUsuarioAdapter extends RecyclerView.Adapter<ResultadoBusquedaUsuarioAdapter.ViewHolder> {
 public class ViewHolder extends RecyclerView.ViewHolder{
     public TextView nombre,email,zona;
+    public FloatingActionButton boton;
 
     public ViewHolder(View vista){
         super(vista);
         nombre=(TextView)vista.findViewById(R.id.nombreContactoResultado);
         email=(TextView)vista.findViewById(R.id.emailContactoResultado);
         zona=(TextView) vista.findViewById(R.id.zonaContactoResultado);
+        boton=(FloatingActionButton)vista.findViewById(R.id.botonResultadoBuscarUsuario);
     }
 
 }
@@ -56,13 +62,17 @@ public class ViewHolder extends RecyclerView.ViewHolder{
     public void onBindViewHolder(ResultadoBusquedaUsuarioAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
         Usuario u = usuarios.get(position);
-
-        // Set item views based on your views and data model
-Log.d("nombre",u.getNombre()); Log.d("mail",u.getEmail());
-
-Log.d("posicion",String.valueOf(position+1));Log.d("de",String.valueOf(getItemCount()));
         viewHolder.nombre.setText(u.getNombre());
         viewHolder.email.setText(u.getEmail());
+        Usuario uActual= SharedPrefHelper.getInstance(mContext).getUser();
+        ContactoDao cDao=new ContactoDao(mContext);
+        if(cDao.esContacto(uActual.getId(),u.getId())){
+            Log.d("contacto","true");
+            viewHolder.boton.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.borrarcontacto));
+        }else{
+            viewHolder.boton.setImageDrawable(ContextCompat.getDrawable(mContext,R.drawable.agregarcontacto));
+            Log.d("contacto","false");
+        }
 
 
     }

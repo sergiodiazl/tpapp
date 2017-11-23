@@ -11,13 +11,6 @@
     tools:context="com.example.sergio_pieza.aplicaciontp.activity.LoginActivity">
 
     <!-- Login progress -->
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
 
     <ScrollView
         android:id="@+id/login_form"
@@ -37,9 +30,7 @@
                     android:id="@+id/emailRegistrar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="email"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
+                    android:hint="@string/emailRegistrar"
                     android:maxLines="1"
                     android:singleLine="true" />
 
@@ -53,9 +44,7 @@
                     android:id="@+id/nombreRegistrar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="nombre"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
+                    android:hint="@string/nombreRegistrar"
                     android:maxLines="1"
                     android:singleLine="true" />
 
@@ -69,10 +58,7 @@
                     android:id="@+id/passwordRegistrar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="contraseña"
-
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
+                    android:hint="@+String/passwordRegistrar"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -85,10 +71,6 @@
                 android:id="@+id/password2Registrar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="repite contraseña"
-
-                android:imeActionLabel="@string/action_sign_in_short"
-                android:imeOptions="actionUnspecified"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true" />

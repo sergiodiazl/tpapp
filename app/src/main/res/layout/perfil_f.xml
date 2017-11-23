@@ -4,28 +4,94 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="soy perfil" />
 
-    <android.support.v4.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+        <ScrollView
+            android:id="@+id/perfil_edit"
+            android:layout_width="371dp"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:fillViewport="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/cartelNombreP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nombreNuevo" />
+
+                <EditText
+                    android:id="@+id/nombreP"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+
+                    android:hint="@string/nombreRegistrar" />
+                <Button
+                    android:id="@+id/botonNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/botonNombre" />
+                <TextView
+                    android:id="@+id/cartelPassP1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contrasenaVieja" />
+
+                <EditText
+                    android:id="@+id/contrasenaVieja"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/cartelPassp2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contrasenaNueva1" />
+                <EditText
+                    android:id="@+id/contrasenaNueva1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:text="" />
+                <TextView
+                    android:id="@+id/cartelPassp3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/contrasenaNueva1"  />
+                <EditText
+                    android:id="@+id/contrasenaNueva2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:text="" />
 
 
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="47dp"
-                android:layout_height="69dp"
-                android:background="@drawable/salir" />
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+                <Button
+                    android:id="@+id/botonContrasena"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/botonContrasena" />
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
 </LinearLayout>

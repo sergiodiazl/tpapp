@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">AplicacionTp</string>
+    <string name="API_MAPS">AIzaSyB9fBN_QNsb5D5WWi5Mrb36-8L0beC0QpM</string>
+    <!-- actividad login-->
+    <string name="emailLogin">Электронная почта</string>
+    <string name="passLogin">Пароль</string>
+    <string name="botonLogin">Вход</string>
+    <string name="action_sign_in_short">уже член?вход</string>
+    <string name="error_invalid_email">Email invalido</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+
+    <string name="title_activity_registrar">RegistrarActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="title_activity_subir_momento">момент загрузки</string>
+    <string name="title_activity_momento_detalle">Момент детали</string>
+    <!-- actividad login-->
+    <string name="emailRegistrar">Электронная почта</string>
+    <string name="nombreRegistrar">Имя</string>
+    <string name="passwordRegistrar">Пароль</string>
+    <string name="password2Registrar">Повторите пароль</string>
+
+    <!-- actividad subir momento-->
+    <string name="dSubirImagen">Напишите описание (необязательно))</string>
+    <string name="botonSubirImagen">Момент загрузки</string>
+
+    <!-- fragmento momento-->
+    <string name="botonDescargarImagen">загрузить изображения</string>
+    <string name="botonVerDetalleMomento">Подробности см.</string>
+
+    <!-- fragmento momento momemtno detalle-->
+    <string name="cartelUsuarioMomentoDetalle">Загружено :</string>
+    <string name="cartelDescripcionMomentoDetalle">Описание</string>
+    <string name="cartelFechaMomentoDetalle">Дата:</string>
+    <string name="cartelLatitudMomentoDetalle">Широта</string>
+    <string name="cartelLongitudMomentoDetalle">Долгота:</string>
+    <string name="cartelZonaMomentoDetalle">зона:</string>
+    <!-- configurar-->
+    <string name="nombreNuevo">Новое имя</string>
+    <string name="botonNombre">изменить имя</string>
+    <string name="contrasenaVieja">Введите текущий пароль</string>
+    <string name="contrasenaNueva1">Новое  пароль</string>
+    <string name="contrasenaNueva2">Напишите еще раз</string>
+    <string name="botonContrasena">Изменение пароля</string>
+    <!-- errore-->
+    <string name="error_timeout_red">отсутствие соединения/тайм-аута</string>
+    <string name="error_auth">ошибка авторизации</string>
+    <string name="error_server">ошибка сервера</string>
+    <string name="error_red">ошибка сети</string>
+    <string name="error_parse">ошибка синтаксического анализа</string>
+</resources>

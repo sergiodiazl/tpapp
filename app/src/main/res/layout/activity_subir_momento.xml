@@ -20,7 +20,7 @@
             android:layout_height="wrap_content" />
         <EditText
             android:id="@+id/dSubirImagen"
-            android:hint="Enter tags"
+            android:hint="@string/dSubirImagen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Upload Image" />
+            android:text="@string/botonSubirImagen" />
 
 
 

@@ -11,13 +11,7 @@
     tools:context="com.example.sergio_pieza.aplicaciontp.activity.LoginActivity">
 
     <!-- Login progress -->
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
+
 
     <ScrollView
         android:id="@+id/login_form"
@@ -38,7 +32,7 @@
                     android:id="@+id/emailLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
+                    android:hint="@string/emailLogin"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true" />
@@ -53,7 +47,7 @@
                     android:id="@+id/passLogin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="contraseña"
+                    android:hint="@string/passLogin"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
                     android:maxLines="1"
@@ -67,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/action_sign_in"
+                android:text="@string/botonLogin"
                 android:textStyle="bold" />
             <Button
                 android:id="@+id/botonARegistrar"
