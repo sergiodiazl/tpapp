@@ -40,6 +40,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
+
     EditText email,pass;
     public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
             "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
@@ -50,13 +51,16 @@ public class LoginActivity extends AppCompatActivity {
                     "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
                     ")+"
     );
+    public static LoginActivity loginActivity;
     Context context = this;
-
+    public static LoginActivity getInstance(){
+    return  loginActivity;
+}
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        loginActivity=this;
         if (SharedPrefHelper.getInstance(this).isLoggedIn()) {
             finish();
             startActivity(new Intent(this,HomeActivity.class));
@@ -143,23 +147,23 @@ public class LoginActivity extends AppCompatActivity {
                         // error
                         if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                             Toast.makeText(getApplicationContext(),
-                                    getApplicationContext().getString(R.string.error_timeout_red),
+                                    getResources().getString(R.string.error_timeout_red),
                                     Toast.LENGTH_LONG).show();
                         } else if (error instanceof AuthFailureError) {
                             Toast.makeText(getApplicationContext(),
-                                    getApplicationContext().getString(R.string.error_auth),
+                                    getResources().getString(R.string.error_auth),
                                     Toast.LENGTH_LONG).show();
                         } else if (error instanceof ServerError) {
                             Toast.makeText(getApplicationContext(),
-                                    getApplicationContext().getString(R.string.error_server),
+                                    getResources().getString(R.string.error_server),
                                     Toast.LENGTH_LONG).show();
                         } else if (error instanceof NetworkError) {
                             Toast.makeText(getApplicationContext(),
-                                    getApplicationContext().getString(R.string.error_red),
+                                    getResources().getString(R.string.error_red),
                                     Toast.LENGTH_LONG).show();
                         } else if (error instanceof ParseError) {
                             Toast.makeText(getApplicationContext(),
-                                    getApplicationContext().getString(R.string.error_parse),
+                                    getResources().getString(R.string.error_parse),
                                     Toast.LENGTH_LONG).show();
                         }
                     }
@@ -246,7 +250,28 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     // error
-                    Log.d("Error.Response",error.getMessage());
+                    // error
+                    if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.error_timeout_red),
+                                Toast.LENGTH_LONG).show();
+                    } else if (error instanceof AuthFailureError) {
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.error_auth),
+                                Toast.LENGTH_LONG).show();
+                    } else if (error instanceof ServerError) {
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.error_server),
+                                Toast.LENGTH_LONG).show();
+                    } else if (error instanceof NetworkError) {
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.error_red),
+                                Toast.LENGTH_LONG).show();
+                    } else if (error instanceof ParseError) {
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.error_parse),
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
             }
     ) {
@@ -306,7 +331,28 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     // error
-                    Log.d("Error.Response",error.getMessage());
+                    // error
+                    if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.error_timeout_red),
+                                Toast.LENGTH_LONG).show();
+                    } else if (error instanceof AuthFailureError) {
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.error_auth),
+                                Toast.LENGTH_LONG).show();
+                    } else if (error instanceof ServerError) {
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.error_server),
+                                Toast.LENGTH_LONG).show();
+                    } else if (error instanceof NetworkError) {
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.error_red),
+                                Toast.LENGTH_LONG).show();
+                    } else if (error instanceof ParseError) {
+                        Toast.makeText(getApplicationContext(),
+                                getResources().getString(R.string.error_parse),
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
             }
     ) {

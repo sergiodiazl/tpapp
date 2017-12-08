@@ -77,7 +77,10 @@
             <Spinner
                 android:id="@+id/spinnerRegistrar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></Spinner>
+                android:layout_height="match_parent"
+                >
+
+            </Spinner>
             <Button
                 android:id="@+id/botonRegistrar"
                 style="?android:textAppearanceSmall"
@@ -85,6 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="registrar tu cuenta"
+                android:background="@color/colorAccent"
                 android:textStyle="bold" />
             <Button
                 android:id="@+id/botonALogin"
@@ -93,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="tienes cuenta?inicia sesion"
+                android:background="@color/colorAccent"
                 android:textStyle="bold" />
         </android.support.design.widget.TextInputLayout>
 

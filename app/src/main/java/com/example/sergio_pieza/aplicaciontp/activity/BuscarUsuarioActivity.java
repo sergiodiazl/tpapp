@@ -1,20 +1,14 @@
 package com.example.sergio_pieza.aplicaciontp.activity;
 
-import android.app.Activity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.sergio_pieza.aplicaciontp.R;
-import com.example.sergio_pieza.aplicaciontp.adapter.ResultadoBusquedaUsuarioAdapter;
 import com.example.sergio_pieza.aplicaciontp.fragment.BuscarUsuariosF;
 import com.example.sergio_pieza.aplicaciontp.sql.Usuario;
 

@@ -33,15 +33,30 @@
         <activity
             android:name=".activity.RegistrarActivity"
             android:label="@string/title_activity_registrar"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".activity.LoginActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.LoginActivity" />
+
+        </activity>
         <activity
             android:name=".activity.SubirMomentoActivity"
             android:label="@string/title_activity_subir_momento"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".activity.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.HomeActivity" />
+        </activity>
         <activity
             android:name=".activity.MomentoDetalleActivity"
             android:label="@string/title_activity_momento_detalle"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".activity.HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.HomeActivity" /></activity>
         <activity android:name=".activity.BuscarUsuarioActivity" >
 
         </activity>

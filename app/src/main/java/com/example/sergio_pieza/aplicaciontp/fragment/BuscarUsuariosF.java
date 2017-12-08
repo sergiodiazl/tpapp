@@ -25,7 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.Volley.VolleySingleton;
-import com.example.sergio_pieza.aplicaciontp.adapter.ResultadoBusquedaUsuarioAdapter;
+import com.example.sergio_pieza.aplicaciontp.adapter.UsuarioAdapter;
 import com.example.sergio_pieza.aplicaciontp.helper.Api;
 import com.example.sergio_pieza.aplicaciontp.sql.Usuario;
 
@@ -43,7 +43,7 @@ import java.util.Map;
 
 public class BuscarUsuariosF extends Fragment {
     String nombreUsuario;
-    ResultadoBusquedaUsuarioAdapter rbuAdapter;
+    UsuarioAdapter rbuAdapter;
     ArrayList<Usuario> usuarios;
     RecyclerView rv;
     @Override
@@ -61,7 +61,7 @@ public class BuscarUsuariosF extends Fragment {
         rv = (RecyclerView) view.findViewById(R.id.listaBuscarUsuarios);
         rv.setHasFixedSize(true);
         usuarios=new ArrayList<Usuario>();
-        rbuAdapter=new ResultadoBusquedaUsuarioAdapter(this.getActivity(),usuarios);
+        rbuAdapter=new UsuarioAdapter(this.getActivity(),usuarios);
         rv.setAdapter(rbuAdapter);
         LinearLayoutManager llm=new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);

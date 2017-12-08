@@ -27,9 +27,14 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
 import com.android.volley.NetworkResponse;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.example.sergio_pieza.aplicaciontp.R;
@@ -129,7 +134,7 @@ static final int COARSE_LOCATION =1;
                          Log.d("gps","Your current location is"+ "\n" + "Lattitude = " + lat
                                 + "\n" + "Longitude = " + lon);
                     }else{
-                        Toast.makeText(this,"Unble to Trace your location",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this,getResources().getString(R.string.ubicacionNoRegistra),Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -137,14 +142,14 @@ static final int COARSE_LOCATION =1;
             protected void buildAlertMessageNoGps() {
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Please Turn ON your GPS Connection")
+                builder.setMessage(getResources().getString(R.string.enciendaGps))
                         .setCancelable(false)
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
                             public void onClick(final DialogInterface dialog, final int id) {
                                 startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
                             }
                         })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        .setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
                             public void onClick(final DialogInterface dialog, final int id) {
                                 dialog.cancel();
                             }
@@ -202,8 +207,28 @@ static final int COARSE_LOCATION =1;
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
+                        // error
+                        if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                            Toast.makeText(getApplicationContext(),
+                                    getResources().getString(R.string.error_timeout_red),
+                                    Toast.LENGTH_LONG).show();
+                        } else if (error instanceof AuthFailureError) {
+                            Toast.makeText(getApplicationContext(),
+                                    getResources().getString(R.string.error_auth),
+                                    Toast.LENGTH_LONG).show();
+                        } else if (error instanceof ServerError) {
+                            Toast.makeText(getApplicationContext(),
+                                    getResources().getString(R.string.error_server),
+                                    Toast.LENGTH_LONG).show();
+                        } else if (error instanceof NetworkError) {
+                            Toast.makeText(getApplicationContext(),
+                                    getResources().getString(R.string.error_red),
+                                    Toast.LENGTH_LONG).show();
+                        } else if (error instanceof ParseError) {
+                            Toast.makeText(getApplicationContext(),
+                                    getResources().getString(R.string.error_parse),
+                                    Toast.LENGTH_LONG).show();
+                        }}
                 }) {
 
             /*

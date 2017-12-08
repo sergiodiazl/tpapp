@@ -24,10 +24,11 @@ public class HomeActivity extends AppCompatActivity implements ListaMomentoF.OnM
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        //terminar la otra actividad
+        LoginActivity.getInstance().finish();
         MyPagerAdapter myPagerAdapter =
                 new MyPagerAdapter(
-                        getSupportFragmentManager());
+                        getSupportFragmentManager(),this);
         ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         viewPager.setAdapter(myPagerAdapter);
         //asignar los iconos a las pestañas
@@ -36,6 +37,7 @@ public class HomeActivity extends AppCompatActivity implements ListaMomentoF.OnM
          int[] iconos = {
                 R.drawable.home,
                 R.drawable.contactos,
+                 R.drawable.chat,
                 R.drawable.perfil
         };
         tabLayout.setupWithViewPager(viewPager);

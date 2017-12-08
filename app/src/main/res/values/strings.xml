@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">AplicacionTp</string>
     <string name="API_MAPS">AIzaSyB9fBN_QNsb5D5WWi5Mrb36-8L0beC0QpM</string>
+    <!--titulos-->
+    <string name="home">Inicio</string>
+    <string name="contactos">Contactos</string>
+    <string name="chat">Chat</string>
+    <string name="perfil">Mi Perfil</string>
     <!-- actividad login-->
     <string name="emailLogin">Email</string>
     <string name="passLogin">Contraseña</string>
@@ -16,7 +21,6 @@
     <string name="title_activity_registrar">RegistrarActivity</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_subir_momento">Subir Momento</string>
     <string name="title_activity_momento_detalle">MomentoDetalle</string>
     <!-- actividad login-->
@@ -28,6 +32,10 @@
     <!-- actividad subir momento-->
     <string name="dSubirImagen">Escriba una descripción(opcional)</string>
     <string name="botonSubirImagen">Subir Momento</string>
+     <string name="ubicacionNoRegistra">Tu ubicación no pudo ser detectada</string>
+    <string name="enciendaGps">Encienda la conexion de gps,por favor</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
 
     <!-- fragmento momento-->
     <string name="botonDescargarImagen">Descargar imagen</string>
@@ -40,6 +48,11 @@
     <string name="cartelLatitudMomentoDetalle">Latitud:</string>
     <string name="cartelLongitudMomentoDetalle">Longitud:</string>
     <string name="cartelZonaMomentoDetalle">Zona:</string>
+    <!-- chat -->
+    <string name="verChat">ver chat completo</string>
+    <!--buscar contacto -->
+    <string name="buscar">Buscar</string>
+    <string name="buscarHint">Escriba un nombre</string>
     <!-- configurar-->
     <string name="nombreNuevo">Nuevo nombre</string>
     <string name="botonNombre">Cambiar nombre</string>

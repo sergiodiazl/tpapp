@@ -2,55 +2,53 @@
     <string name="app_name">AplicacionTp</string>
     <string name="API_MAPS">AIzaSyB9fBN_QNsb5D5WWi5Mrb36-8L0beC0QpM</string>
     <!-- actividad login-->
-    <string name="emailLogin">Email</string>
-    <string name="passLogin">Contraseña</string>
-    <string name="botonLogin">Iniciar sesion</string>
-    <string name="action_sign_in_short">Sin cuenta?registrate</string>
+    <string name="emailLogin">Электронная почта</string>
+    <string name="passLogin">Пароль</string>
+    <string name="botonLogin">Вход</string>
+    <string name="action_sign_in_short">уже член?вход</string>
     <string name="error_invalid_email">Email invalido</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+
     <string name="title_activity_registrar">RegistrarActivity</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_subir_momento">Subir Momento</string>
-    <string name="title_activity_momento_detalle">MomentoDetalle</string>
+
+    <string name="title_activity_subir_momento">момент загрузки</string>
+    <string name="title_activity_momento_detalle">Момент детали</string>
     <!-- actividad login-->
-    <string name="emailRegistrar">Email</string>
-    <string name="nombreRegistrar">Nombre</string>
-    <string name="passwordRegistrar">Contraseña</string>
-    <string name="password2Registrar">Repita la contraseña</string>
+    <string name="emailRegistrar">Электронная почта</string>
+    <string name="nombreRegistrar">Имя</string>
+    <string name="passwordRegistrar">Пароль</string>
+    <string name="password2Registrar">Повторите пароль</string>
 
     <!-- actividad subir momento-->
-    <string name="dSubirImagen">Escriba una descripción(opcional)</string>
-    <string name="botonSubirImagen">Subir Momento</string>
+    <string name="dSubirImagen">Напишите описание (необязательно))</string>
+    <string name="botonSubirImagen">Момент загрузки</string>
 
     <!-- fragmento momento-->
-    <string name="botonDescargarImagen">Descargar imagen</string>
-    <string name="botonVerDetalleMomento">Ver detalles</string>
+    <string name="botonDescargarImagen">загрузить изображения</string>
+    <string name="botonVerDetalleMomento">Подробности см.</string>
 
     <!-- fragmento momento momemtno detalle-->
-    <string name="cartelUsuarioMomentoDetalle">Subido por :</string>
-    <string name="cartelDescripcionMomentoDetalle">Descripcion:</string>
-    <string name="cartelFechaMomentoDetalle">Fecha:</string>
-    <string name="cartelLatitudMomentoDetalle">Latitud:</string>
-    <string name="cartelLongitudMomentoDetalle">Longitud:</string>
-    <string name="cartelZonaMomentoDetalle">Zona:</string>
+    <string name="cartelUsuarioMomentoDetalle">Загружено :</string>
+    <string name="cartelDescripcionMomentoDetalle">Описание</string>
+    <string name="cartelFechaMomentoDetalle">Дата:</string>
+    <string name="cartelLatitudMomentoDetalle">Широта</string>
+    <string name="cartelLongitudMomentoDetalle">Долгота:</string>
+    <string name="cartelZonaMomentoDetalle">зона:</string>
     <!-- configurar-->
-    <string name="nombreNuevo">Nuevo nombre</string>
-    <string name="botonNombre">Cambiar nombre</string>
-    <string name="contrasenaVieja">Escribe tu contraseña actual</string>
-    <string name="contrasenaNueva1">Escribe la contraseña nueva</string>
-    <string name="contrasenaNueva2">Escribila de nuevo</string>
-    <string name="botonContrasena">Cambiar contraseña</string>
+    <string name="nombreNuevo">Новое имя</string>
+    <string name="botonNombre">изменить имя</string>
+    <string name="contrasenaVieja">Введите текущий пароль</string>
+    <string name="contrasenaNueva1">Новое  пароль</string>
+    <string name="contrasenaNueva2">Напишите еще раз</string>
+    <string name="botonContrasena">Изменение пароля</string>
     <!-- errore-->
-    <string name="error_timeout_red">no hay conexion/timeout</string>
-    <string name="error_auth">error de autorizacion</string>
-    <string name="error_server">error de server</string>
-    <string name="error_red">error_red </string>
-    <string name="error_parse">error parseando</string>
+    <string name="error_timeout_red">отсутствие соединения/тайм-аута</string>
+    <string name="error_auth">ошибка авторизации</string>
+    <string name="error_server">ошибка сервера</string>
+    <string name="error_red">ошибка сети</string>
+    <string name="error_parse">ошибка синтаксического анализа</string>
 </resources>

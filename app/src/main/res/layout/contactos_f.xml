@@ -16,16 +16,16 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
 
-            android:hint="buscar" />
+            android:text="@string/buscarHint"/>
 
         <Button
             android:id="@+id/botonBuscarUsuarios"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:background="@color/colorAccent"
             android:layout_toEndOf="@+id/campoBuscarUsuario"
             android:layout_toRightOf="@+id/campoBuscarUsuario"
-            android:text="buscar" />
+            android:text="@string/buscar" />
     </RelativeLayout>
     <FrameLayout
         android:id="@+id/contactos_placeholder"

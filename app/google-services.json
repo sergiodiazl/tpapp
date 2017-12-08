@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "410474275686-ft1svmlfi8qib4voth03g4dkcidm47br.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sergio_pieza.aplicaciontp",
+            "certificate_hash": "b469f954a1d7ff19a5cdc2995e36fe520e0c8480"
+          }
+        },
+        {
           "client_id": "410474275686-n3udsbnll90pghhvmiltg4n9u33a6s0l.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "410474275686-n3udsbnll90pghhvmiltg4n9u33a6s0l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

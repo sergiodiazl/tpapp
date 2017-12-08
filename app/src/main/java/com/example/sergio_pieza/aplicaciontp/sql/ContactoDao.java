@@ -41,6 +41,12 @@ public class ContactoDao{
             return database.insert("contacto",null,values);
 
         }
+        public void borrar(int id1,int id2){
+            String where=" seguidor_id="+String.valueOf(id1) +" and seguido_id = "+String.valueOf(id2);
+            database.delete("contacto",where,null);
+
+            }
+
 public ArrayList<Usuario> contactosUsuario(int id) {
     ArrayList<Usuario> cu = new ArrayList<Usuario>();
 

@@ -1,21 +1,26 @@
 package com.example.sergio_pieza.aplicaciontp.adapter;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.fragment.ContactosF;
 import com.example.sergio_pieza.aplicaciontp.fragment.HomeF;
 import com.example.sergio_pieza.aplicaciontp.fragment.ListaMomentoF;
 import com.example.sergio_pieza.aplicaciontp.fragment.PerfilF;
 
+import java.util.ArrayList;
+
 /**
  * Created by sergio-pieza on 06/11/2017.
  */
 public class MyPagerAdapter extends FragmentStatePagerAdapter {
-
-    public MyPagerAdapter(FragmentManager fm) {
+private Context mContext;
+    public MyPagerAdapter(FragmentManager fm ,Context context) {
         super(fm);
+        mContext=context;
     }
 
     @Override
@@ -31,6 +36,9 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
             case 2:
                 fragment = new PerfilF();
                 break;
+            case 3:
+                fragment = new PerfilF();
+                break;
             default:
                 fragment = null;
         }
@@ -39,17 +47,24 @@ public class MyPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
     @Override
     public CharSequence getPageTitle(int position) {
+        String titulo;
         switch (position) {
             case 0:
-                return "Home";
+                titulo =mContext.getResources().getString(R.string.home);
+                return titulo;
             case 1:
-                return "Contacto";
+                titulo =mContext.getResources().getString(R.string.contactos);
+                return titulo;
             case 02:
-                return "Perfil";
+                titulo =mContext.getResources().getString(R.string.chat);
+                return titulo;
+            case 03:
+                titulo =mContext.getResources().getString(R.string.perfil);
+                return titulo;
         }
         return null;
     }
