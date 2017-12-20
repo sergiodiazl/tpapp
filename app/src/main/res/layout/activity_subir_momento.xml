@@ -4,49 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.sergio_pieza.aplicaciontp.activity.SubirMomentoActivity">
+    tools:context="com.example.sergio_pieza.aplicaciontp.activity.SubirMomentoActivity"
+    android:padding="20dp">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+
         android:layout_centerVertical="true"
         android:orientation="vertical"
-        android:background="@drawable/borde_subir_imagen">
+        android:id="@+id/layoutSubirMomento"
+        >
 
         <ImageView
             android:id="@+id/iSubirImagen"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
+            android:layout_height="0dp"
+            android:layout_weight="50"/>
         <EditText
             android:id="@+id/dSubirImagen"
             android:hint="@string/dSubirImagen"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="10"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="10">
 
         <Button
+            android:id="@+id/botonImagenCarpeta"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_weight="5"
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
+            android:drawableRight="@drawable/imagen_boton"
+            android:drawablePadding="8dp"
+            android:paddingRight="24dp"
+            android:text="@string/elegir" />
+
+        <Button
+            android:id="@+id/botonImagenCamara"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:layout_weight="5"
+            android:background="@color/colorAccent"
+            android:drawableRight="@drawable/camara_boton"
+            android:drawablePadding="8dp"
+            android:paddingRight="24dp"
+            android:text="@string/foto" />
+</LinearLayout>
+        <Button
             android:id="@+id/botonSubirImagen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="10"
             android:layout_gravity="center"
             android:background="@color/colorAccent"
             android:text="@string/botonSubirImagen" />
 
+       </LinearLayout>
 
 
-    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabAHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="49dp"
         android:layout_marginEnd="35dp"
-        android:layout_marginRight="35dp"
+        android:layout_marginRight="20dp"
         android:clickable="true"
-        app:srcCompat="@drawable/home" />
+        app:srcCompat="@drawable/home"
+        />
 
 </RelativeLayout>

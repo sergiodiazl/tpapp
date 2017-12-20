@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">AplicacionTp</string>
     <string name="API_MAPS">AIzaSyB9fBN_QNsb5D5WWi5Mrb36-8L0beC0QpM</string>
+    <!--titulos-->
+    <string name="home">Inicio</string>
+    <string name="contactos">Contactos</string>
+    <string name="miPerfil">Mi perfil</string>
+    <string name="perfil">Configuracion</string>
     <!-- actividad login-->
     <string name="emailLogin">Email</string>
     <string name="passLogin">Contraseña</string>
@@ -13,12 +18,11 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_registrar">RegistrarActivity</string>
+    <string name="title_activity_registrar">Registrar cuenta nueva</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_subir_momento">Subir Momento</string>
-    <string name="title_activity_momento_detalle">MomentoDetalle</string>
+    <string name="title_activity_momento_detalle">Detalles del momento</string>
     <!-- actividad login-->
     <string name="emailRegistrar">Email</string>
     <string name="nombreRegistrar">Nombre</string>
@@ -28,6 +32,9 @@
     <!-- actividad subir momento-->
     <string name="dSubirImagen">Escriba una descripción(opcional)</string>
     <string name="botonSubirImagen">Subir Momento</string>
+    <string name="ubicacionNoRegistra">Tu ubicación no pudo ser detectada</string>
+    <string name="enciendaGps">Encienda la conexion de gps,por favor</string>
+
 
     <!-- fragmento momento-->
     <string name="botonDescargarImagen">Descargar imagen</string>
@@ -40,6 +47,11 @@
     <string name="cartelLatitudMomentoDetalle">Latitud:</string>
     <string name="cartelLongitudMomentoDetalle">Longitud:</string>
     <string name="cartelZonaMomentoDetalle">Zona:</string>
+    <!-- chat -->
+    <string name="verChat">ver chat completo</string>
+    <!--buscar contacto -->
+    <string name="buscar">Buscar</string>
+    <string name="buscarHint">Escriba un nombre</string>
     <!-- configurar-->
     <string name="nombreNuevo">Nuevo nombre</string>
     <string name="botonNombre">Cambiar nombre</string>
@@ -53,4 +65,29 @@
     <string name="error_server">error de server</string>
     <string name="error_red">error_red </string>
     <string name="error_parse">error parseando</string>
+    <string name="no_mail">Escriba su email</string>
+    <string name="no_nombre">Escriba su nombre</string>
+    <string name="no_pass">Escriba su contraseña</string>
+    <string name="no_pass2">Repita la contraseña</string>
+    <string name="no_pass3">Escriba su contraseña nueva</string>
+
+    <string name="pass_distinto">Las contraseñas deben coincidir</string>
+    <!--popups-->
+    <string name="cerrarSesion">¿Quiere cerrar sesión?</string>
+    <string name="si">Si</string>
+    <string name="no">No</string>
+    <string name="elegir">Elegir imagen</string>
+    <string name="foto">Sacar foto</string>
+    <string name="idioma">Elegir idioma</string>
+    <string name="espanol">Español</string>
+    <string name="ingles">Inglés</string>
+    <string name="ruso">Ruso</string>
+    <string name="descripcionHint">escriba la nueva descripción</string>
+    <string name="noti1titulo">buscando ubicacion</string>
+    <string name="noti1texto">La imagen se subira cuando se encuentre la ubicacion</string>
+    <string name="noti2titulo">Coordenadas encontradas</string>
+    <string name="noti2texto">Momento subido</string>
+    <string name="noti3titulo">Error al subir</string>
+    <string name="borrarMomento">¿Quiere borrar este momento?</string>
+    <string name="editarDescripcion">¿Quiere cambiar la descricpión?</string>
 </resources>

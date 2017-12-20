@@ -7,11 +7,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.RecyclerView;
@@ -39,11 +39,11 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.Volley.VolleySingleton;
 import com.example.sergio_pieza.aplicaciontp.activity.MomentoDetalleActivity;
+import com.example.sergio_pieza.aplicaciontp.activity.SubirMomentoActivity;
 import com.example.sergio_pieza.aplicaciontp.adapter.MomentoAdapter;
-import com.example.sergio_pieza.aplicaciontp.fragment.dummy.DummyContent;
-import com.example.sergio_pieza.aplicaciontp.fragment.dummy.DummyContent.DummyItem;
 import com.example.sergio_pieza.aplicaciontp.helper.Api;
 import com.example.sergio_pieza.aplicaciontp.helper.RecyclerViewClickListener;
+import com.example.sergio_pieza.aplicaciontp.helper.SesionHelper;
 import com.example.sergio_pieza.aplicaciontp.helper.SharedPrefHelper;
 import com.example.sergio_pieza.aplicaciontp.sql.Momento;
 import com.example.sergio_pieza.aplicaciontp.sql.MomentoDao;
@@ -74,16 +74,19 @@ public class ListaMomentoF extends Fragment {
     ArrayList<Momento> momentos=new ArrayList<Momento>();
     RecyclerView rv;
     MomentoAdapter mAdapter;
+    FloatingActionButton subir;
+
     private RecyclerViewClickListener listenerRecycler;
     private OnMomentoSelectedListener listenerSelect;
     private final int permisoEscribir =2;
+    private Context mContext;
     public ListaMomentoF() {
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);//indica q tiene menu
-
+        mContext=getActivity();
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE},permisoEscribir);//Method of Fragment
 
@@ -98,6 +101,13 @@ public class ListaMomentoF extends Fragment {
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);//indica q tiene menu
         View view = inflater.inflate(R.layout.fragment_momento_list, container, false);
+        subir=(FloatingActionButton)view.findViewById(R.id.botonASubirMomento);
+        subir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                aSubirMomento();
+            }
+        });
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.listaMomentos);
         rv.setHasFixedSize(true);
          listenerRecycler = (vistaListener, position) -> {
@@ -141,8 +151,9 @@ public class ListaMomentoF extends Fragment {
                                     String p4 = m.getString("descripcion");
                                     Double p5 = m.getDouble("latitud");
                                     Double p6 = m.getDouble("longitud");
-                                    int p7 = m.getInt("zona_id");
-                                    int p8 = m.getInt("usuario_id");
+                                    int p7 = m.getInt("usuario_id");
+                                    int p8 = m.getInt("zona_id");
+
                                     Momento nuevoMomento = new Momento(p1,p2,p3,p4,p5,p6,p7,p8);
                                     momentos.add(nuevoMomento);
                                     mDao.insertar(nuevoMomento);
@@ -220,7 +231,11 @@ public class ListaMomentoF extends Fragment {
         return view;
     }
 
+    public void aSubirMomento(){
 
+        startActivity(new Intent(this.getActivity(),SubirMomentoActivity.class));
+        return;
+    }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
@@ -254,7 +269,7 @@ public class ListaMomentoF extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int boton =item.getItemId();
         if (boton ==R.id.salir){
-            cerrarSesion();
+            SesionHelper.cerrarSesion(mContext);
             return true;
         }
         if(boton==R.id.buscar){
@@ -263,28 +278,6 @@ public class ListaMomentoF extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    public void cerrarSesion(){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-        alertDialogBuilder.setMessage("Queres cerrar sesión");
-        alertDialogBuilder.setPositiveButton("si",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-
-                        SharedPrefHelper.getInstance(getActivity()).logout();
-                    }
-                });
-
-        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-    }
     public interface OnMomentoSelectedListener {
         public void onItemSelected(Momento m);
     }
@@ -300,4 +293,5 @@ public class ListaMomentoF extends Fragment {
                             + " hay que implementar onMomentoSelectedlistener");
         }
     }
+
 }

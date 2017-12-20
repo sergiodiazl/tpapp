@@ -29,6 +29,7 @@ import com.example.sergio_pieza.aplicaciontp.adapter.UsuarioAdapter;
 import com.example.sergio_pieza.aplicaciontp.fragment.dummy.DummyContent;
 import com.example.sergio_pieza.aplicaciontp.fragment.dummy.DummyContent.DummyItem;
 import com.example.sergio_pieza.aplicaciontp.helper.Api;
+import com.example.sergio_pieza.aplicaciontp.helper.SesionHelper;
 import com.example.sergio_pieza.aplicaciontp.helper.SharedPrefHelper;
 import com.example.sergio_pieza.aplicaciontp.sql.ContactoDao;
 import com.example.sergio_pieza.aplicaciontp.sql.Momento;
@@ -60,8 +61,8 @@ public class ListaContactoF extends Fragment {
 
     ArrayList<Usuario> cu=new ArrayList<Usuario>();
     RecyclerView rv;
-   UsuarioAdapter mAdapter;
-
+    UsuarioAdapter mAdapter;
+    Context mContext;
     public ListaContactoF() {
     }
 
@@ -80,10 +81,11 @@ public class ListaContactoF extends Fragment {
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.listaContactos);
         rv.setHasFixedSize(true);
         int idU = uActual.getId();
-        ContactoDao cDao=new ContactoDao(getActivity());
+        mContext=this.getContext();
+        ContactoDao cDao=new ContactoDao(mContext);
         cu=cDao.contactosUsuario(idU);
         setHasOptionsMenu(true);
-        mAdapter = new UsuarioAdapter(this.getContext(), cu);
+        mAdapter = new UsuarioAdapter(mContext, cu);
         rv.setAdapter(mAdapter);
         // Set the adapter
         LinearLayoutManager llm = new LinearLayoutManager((getActivity()));
@@ -103,37 +105,14 @@ public class ListaContactoF extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int boton =item.getItemId();
         if (boton ==R.id.salir){
-            cerrarSesion();
+            SesionHelper.cerrarSesion(mContext);
+
             return true;
         }
-        if(boton==R.id.buscarContacto){
-            return  true;
-        }
+
         return super.onOptionsItemSelected(item);
     }
 
-    public void cerrarSesion(){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
-        alertDialogBuilder.setMessage("Queres cerrar sesión");
-        alertDialogBuilder.setPositiveButton("si",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-
-                        SharedPrefHelper.getInstance(getActivity()).logout();
-                    }
-                });
-
-        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-    }
 
 
 

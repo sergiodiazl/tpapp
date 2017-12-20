@@ -11,7 +11,7 @@
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
 
-    <string name="title_activity_registrar">RegistrarActivity</string>
+    <string name="title_activity_registrar">зарегистрировать новый аккаунт</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 
@@ -51,4 +51,36 @@
     <string name="error_server">ошибка сервера</string>
     <string name="error_red">ошибка сети</string>
     <string name="error_parse">ошибка синтаксического анализа</string>
+    <string name="home">дом</string>
+    <string name="contactos">контакты</string>
+    <string name="chat">мой профиль</string>
+    <string name="perfil">настроить</string>
+    <string name="ubicacionNoRegistra">Ваше убиение не может быть найдено</string>
+    <string name="enciendaGps">Включите GPS соединение, пожалуйста</string>
+    <string name="buscar">поиск</string>
+    <string name="buscarHint">написать имя</string>
+    <string name="no_mail">напишите вашу электронную почту</string>
+    <string name="no_nombre">написать свое имя</string>
+    <string name="no_pass">написать пароль</string>
+    <string name="no_pass2">повторите пароль</string>
+    <string name="no_pass3">Введите новый пароль</string>
+    <string name="cerrarSesion">Вы хотите выйти из системы</string>
+    <string name="pass_distinto">Пароли не совпадают</string>
+    <string name="si">да</string>
+    <string name="no">нет</string>
+    <string name="elegir">Выберите изображение</string>
+    <string name="foto">Возьмите новый снимок</string>
+    <string name="espanol">испанский язык</string>
+    <string name="ingles">английский язык</string>
+    <string name="ruso">русский язык</string>
+    <string name="idioma">выбранный язык</string>
+    <string name="noti3titulo">Ошибка при загрузке</string>
+    <string name="noti2texto">загрузка завершена</string>
+    <string name="noti2titulo">найденные координаты</string>
+    <string name="noti1texto">Изображение будет загружено при обнаружении координат</string>
+    <string name="noti1titulo">Поиск местоположения</string>
+    <string name="borrarMomento">Вы хотите удалить этот момент?</string>
+    <string name="descripcionHint">обряд нового описания</string>
+    <string name="editarDescripcion">Вы хотите изменить описание?</string>
+    <string name="miPerfil">мой профиль</string>
 </resources>

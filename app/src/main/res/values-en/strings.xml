@@ -1,54 +1,93 @@
 <resources>
     <string name="app_name">AplicacionTp</string>
     <string name="API_MAPS">AIzaSyB9fBN_QNsb5D5WWi5Mrb36-8L0beC0QpM</string>
+    <!--titulos-->
+    <string name="contactos">Contacts</string>
+    <string name="perfil">Settings</string>
     <!-- actividad login-->
-    <string name="emailLogin">Электронная почта</string>
-    <string name="passLogin">Пароль</string>
-    <string name="botonLogin">Вход</string>
-    <string name="action_sign_in_short">уже член?вход</string>
-    <string name="error_invalid_email">Email invalido</string>
+    <string name="emailLogin">Email</string>
+    <string name="passLogin">Password</string>
+    <string name="botonLogin">Login</string>
+    <string name="action_sign_in_short">Not a member?Register</string>
+    <string name="error_invalid_email">Invalid email</string>
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
-
-    <string name="title_activity_registrar">RegistrarActivity</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_registrar">Register a new account</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-
-    <string name="title_activity_subir_momento">момент загрузки</string>
-    <string name="title_activity_momento_detalle">Момент детали</string>
+    <string name="title_activity_subir_momento">Upload a moment</string>
+    <string name="title_activity_momento_detalle">Moment details</string>
     <!-- actividad login-->
-    <string name="emailRegistrar">Электронная почта</string>
-    <string name="nombreRegistrar">Имя</string>
-    <string name="passwordRegistrar">Пароль</string>
-    <string name="password2Registrar">Повторите пароль</string>
+    <string name="emailRegistrar">Email</string>
+    <string name="passwordRegistrar">Password</string>
+    <string name="password2Registrar">Repeat password</string>
 
     <!-- actividad subir momento-->
-    <string name="dSubirImagen">Напишите описание (необязательно))</string>
-    <string name="botonSubirImagen">Момент загрузки</string>
+    <string name="dSubirImagen">Write a description(optional)</string>
+    <string name="botonSubirImagen">Upload moment</string>
+    <string name="ubicacionNoRegistra">Your ubication couldnt be found</string>
+    <string name="enciendaGps">Turn on Gps connection,please</string>
+
 
     <!-- fragmento momento-->
-    <string name="botonDescargarImagen">загрузить изображения</string>
-    <string name="botonVerDetalleMomento">Подробности см.</string>
+    <string name="botonDescargarImagen">Download image</string>
+    <string name="botonVerDetalleMomento">See details</string>
 
     <!-- fragmento momento momemtno detalle-->
-    <string name="cartelUsuarioMomentoDetalle">Загружено :</string>
-    <string name="cartelDescripcionMomentoDetalle">Описание</string>
-    <string name="cartelFechaMomentoDetalle">Дата:</string>
-    <string name="cartelLatitudMomentoDetalle">Широта</string>
-    <string name="cartelLongitudMomentoDetalle">Долгота:</string>
-    <string name="cartelZonaMomentoDetalle">зона:</string>
+    <string name="cartelUsuarioMomentoDetalle">Uploaded by :</string>
+    <string name="cartelDescripcionMomentoDetalle">Description:</string>
+    <string name="cartelFechaMomentoDetalle">date:</string>
+    <string name="cartelLatitudMomentoDetalle">Latitude:</string>
+    <string name="cartelLongitudMomentoDetalle">Longitude:</string>
+    <string name="cartelZonaMomentoDetalle">Zone:</string>
+    <!-- chat -->
+    <string name="verChat">ver chat completo</string>
+    <!--buscar contacto -->
+    <string name="buscar">Search</string>
+    <string name="buscarHint">Write a name</string>
     <!-- configurar-->
-    <string name="nombreNuevo">Новое имя</string>
-    <string name="botonNombre">изменить имя</string>
-    <string name="contrasenaVieja">Введите текущий пароль</string>
-    <string name="contrasenaNueva1">Новое  пароль</string>
-    <string name="contrasenaNueva2">Напишите еще раз</string>
-    <string name="botonContrasena">Изменение пароля</string>
+    <string name="nombreNuevo">New Name</string>
+    <string name="botonNombre">Change name</string>
+    <string name="contrasenaVieja">Write your current password</string>
+    <string name="contrasenaNueva1">Write your new password</string>
+    <string name="contrasenaNueva2">Write it again</string>
+    <string name="botonContrasena">Change password</string>
     <!-- errore-->
-    <string name="error_timeout_red">отсутствие соединения/тайм-аута</string>
-    <string name="error_auth">ошибка авторизации</string>
-    <string name="error_server">ошибка сервера</string>
-    <string name="error_red">ошибка сети</string>
-    <string name="error_parse">ошибка синтаксического анализа</string>
+    <string name="error_timeout_red">no hay conexion/timeout</string>
+    <string name="error_auth">Authorization error</string>
+    <string name="error_server">server error</string>
+    <string name="error_red">network error</string>
+    <string name="error_parse">parsing error</string>
+    <string name="no_mail">Write your email</string>
+    <string name="no_nombre">Write your name</string>
+    <string name="no_pass">Write your password</string>
+    <string name="no_pass2">Repeat password</string>
+    <string name="no_pass3">Write your new password</string>
+
+    <string name="pass_distinto">Passwords dont match</string>
+    <!--popups-->
+    <string name="cerrarSesion">Do you want to log out?</string>
+    <string name="si">yes</string>
+    <string name="no">No</string>
+    <string name="nombreRegistrar">Name</string>
+    <string name="home">Home</string>
+    <string name="elegir">Choose picture</string>
+    <string name="foto">Take new picture</string>
+    <string name="espanol">Spanish</string>
+    <string name="ingles">English</string>
+    <string name="ruso">Russian</string>
+    <string name="idioma">Choose language</string>
+    <string name="noti3titulo">Error while uploading</string>
+    <string name="noti2texto">Moment uploaded</string>
+    <string name="noti2titulo">Coordinates found</string>
+    <string name="noti1texto">Image will be uploaded when coordinates are found</string>
+    <string name="noti1titulo">Searching location</string>
+    <string name="borrarMomento">Do you want to delete this moment?</string>
+    <string name="descripcionHint">write the new description</string>
+    <string name="editarDescripcion">Do you want to change the description?</string>
+    <string name="miPerfil">My profile</string>
 </resources>

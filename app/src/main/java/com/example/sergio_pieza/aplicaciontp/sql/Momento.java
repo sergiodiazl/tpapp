@@ -11,7 +11,7 @@ import java.util.Date;
 public class Momento  implements Serializable{
     public int id_m;
     public String descripcion;
-    public String fecha; //cambiartipo a date
+    public String fecha;
     public String imagen;//ruta de imagen
     public double latitud;
     public double longitud;

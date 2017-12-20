@@ -8,10 +8,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.fragment.ContactosF;
 import com.example.sergio_pieza.aplicaciontp.fragment.HomeF;
-import com.example.sergio_pieza.aplicaciontp.fragment.ListaMomentoF;
+import com.example.sergio_pieza.aplicaciontp.fragment.ListaMisMomentosF;
 import com.example.sergio_pieza.aplicaciontp.fragment.PerfilF;
-
-import java.util.ArrayList;
 
 /**
  * Created by sergio-pieza on 06/11/2017.
@@ -34,13 +32,16 @@ private Context mContext;
                 fragment = new ContactosF();
                 break;
             case 2:
-                fragment = new PerfilF();
+                fragment = new ListaMisMomentosF();
+
                 break;
             case 3:
                 fragment = new PerfilF();
                 break;
             default:
-                fragment = null;
+                fragment = new HomeF();//cambiar a homef()
+                break;
+
         }
         return fragment;
     }
@@ -54,13 +55,14 @@ private Context mContext;
         String titulo;
         switch (position) {
             case 0:
+
                 titulo =mContext.getResources().getString(R.string.home);
                 return titulo;
             case 1:
                 titulo =mContext.getResources().getString(R.string.contactos);
                 return titulo;
             case 02:
-                titulo =mContext.getResources().getString(R.string.chat);
+                titulo =mContext.getResources().getString(R.string.miPerfil);
                 return titulo;
             case 03:
                 titulo =mContext.getResources().getString(R.string.perfil);

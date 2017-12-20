@@ -29,6 +29,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.Volley.VolleySingleton;
 import com.example.sergio_pieza.aplicaciontp.helper.Api;
+import com.example.sergio_pieza.aplicaciontp.helper.TextoHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,15 +45,7 @@ public class RegistrarActivity extends AppCompatActivity {
 
     Spinner spinner;
     String zona_id;
-    public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
-            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-                    "\\@" +
-                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-                    "(" +
-                    "\\." +
-                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-                    ")+"
-    );
+
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,40 +103,15 @@ public class RegistrarActivity extends AppCompatActivity {
 
     }
     private void registrarUsuario(){
-
+        String errorNombre=this.getResources().getString(R.string.no_nombre);
+        String errorMail=this.getResources().getString(R.string.no_mail);
+        String errorPass=this.getResources().getString(R.string.no_pass);
+        String errorPass2=this.getResources().getString(R.string.no_pass2);
+        String repetir=this.getResources().getString(R.string.pass_distinto);
         final String nombreU = nombre.getText().toString().trim();
         final String emailU = email.getText().toString().trim();
         final String passU = pass.getText().toString().trim();
         final String pass2U = pass2.getText().toString().trim();
-
-        if (TextUtils.isEmpty(nombreU)) {
-            nombre.setError("escriba su nombre");
-            nombre.requestFocus();
-            return;
-        }
-
-        if (!checkEmail(emailU)){
-            email.setError("enail no valido");
-            email.requestFocus();
-            return;
-        }
-        if (TextUtils.isEmpty(passU)) {
-            pass.setError("Escriba la contraseña");
-            pass.requestFocus();
-            return;
-        }
-        if (TextUtils.isEmpty(pass2U)) {
-            pass2.setError("Repita la contraseña");
-            pass2.requestFocus();
-            return;
-        }
-        if (!passU.equals(pass2U) ){
-            pass2.setError("Las contraseñas no coinciden");
-            pass2.requestFocus();
-            return;
-        }
-
-
         StringRequest postRequest = new StringRequest(Request.Method.POST, Api.URL,
                 new Response.Listener<String>()
                 {
@@ -204,11 +172,13 @@ public class RegistrarActivity extends AppCompatActivity {
                 return params;
             }
         };
+        if( TextoHelper.textVacio(nombre,errorNombre) && TextoHelper.textVacio(email,errorMail)&&TextoHelper.textVacio(pass,errorPass)
+                && TextoHelper.textVacio(pass2,errorPass2) && TextoHelper.textIguales(pass,pass2,repetir)) {
 
-        VolleySingleton.getInstance(this).addToRequestQueue(postRequest);
+            VolleySingleton.getInstance(this).addToRequestQueue(postRequest);
 
 
-
+        }
     }
 
 
@@ -220,7 +190,5 @@ public class RegistrarActivity extends AppCompatActivity {
 
     }
 
-    private boolean checkEmail(String email) {
-        return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
-    }
+
 }

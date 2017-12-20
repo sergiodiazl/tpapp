@@ -3,9 +3,15 @@ package com.example.sergio_pieza.aplicaciontp.helper;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
+import android.util.DisplayMetrics;
 
 import com.example.sergio_pieza.aplicaciontp.activity.LoginActivity;
 import com.example.sergio_pieza.aplicaciontp.sql.Usuario;
+
+import java.util.Locale;
 
 /**
  * Created by sergio-pieza on 08/11/2017.
@@ -21,7 +27,8 @@ public class SharedPrefHelper {
     private static final String  usuario_nombre ="nombre";
     private static final String usuario_contrasena = "contrasena";
     private static final String zona_id = "keyid";
-
+    private static final String locale="locale";
+    private static final String locale_key="locale_key";
     private static SharedPrefHelper mInstance;
     private static Context mCtx;
 
@@ -74,5 +81,42 @@ public class SharedPrefHelper {
         editor.clear();
         editor.apply();
         mCtx.startActivity(new Intent(mCtx, LoginActivity.class));
+    }
+    public void cargarLocale(){
+        Locale locale = new Locale(getIdioma());
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        Resources res=mCtx.getResources();
+        Configuration configuration=res.getConfiguration();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            configuration.setLocale(locale);
+        }else{
+            configuration.locale=locale;
+        }
+        DisplayMetrics dm=res.getDisplayMetrics();
+        res.updateConfiguration(configuration,dm);
+    }
+    public void setLocale(String idioma){
+        SharedPreferences sharedPreferences=mCtx.getSharedPreferences(locale,Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        Locale myLocale =new Locale(idioma);
+        editor.putString(locale_key,idioma);
+        editor.apply();
+        Resources res=mCtx.getResources();
+        Configuration configuration=res.getConfiguration();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            configuration.setLocale(myLocale);
+        }else{
+            configuration.locale=myLocale;
+        }
+        DisplayMetrics dm=res.getDisplayMetrics();
+        res.updateConfiguration(configuration,dm);
+
+    }
+    public String getIdioma(){
+        SharedPreferences sharedPreferences=mCtx.getSharedPreferences(locale,Context.MODE_PRIVATE);
+        String idioma=sharedPreferences.getString(locale_key,"es");
+        return idioma;
     }
 }

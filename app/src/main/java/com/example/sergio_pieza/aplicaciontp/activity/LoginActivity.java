@@ -24,6 +24,7 @@ import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.Volley.VolleySingleton;
 import com.example.sergio_pieza.aplicaciontp.helper.Api;
 import com.example.sergio_pieza.aplicaciontp.helper.SharedPrefHelper;
+import com.example.sergio_pieza.aplicaciontp.helper.TextoHelper;
 import com.example.sergio_pieza.aplicaciontp.sql.Contacto;
 import com.example.sergio_pieza.aplicaciontp.sql.ContactoDao;
 import com.example.sergio_pieza.aplicaciontp.sql.Usuario;
@@ -42,15 +43,6 @@ import java.util.regex.Pattern;
 public class LoginActivity extends AppCompatActivity {
 
     EditText email,pass;
-    public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
-            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-                    "\\@" +
-                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-                    "(" +
-                    "\\." +
-                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-                    ")+"
-    );
     public static LoginActivity loginActivity;
     Context context = this;
     public static LoginActivity getInstance(){
@@ -82,18 +74,10 @@ public class LoginActivity extends AppCompatActivity {
         pass= (EditText)findViewById(R.id.passLogin);
     }
     private void login(){
+        String errorPass =this.getResources().getString(R.string.no_pass);
         final String emailU = email.getText().toString().trim();
         final String passU = pass.getText().toString().trim();
-        if (!checkEmail(emailU)){
-            email.setError("enail no valido");
-            email.requestFocus();
-            return;
-        }
-        if (TextUtils.isEmpty(passU)) {
-            pass.setError("Escriba la contraseña");
-            pass.requestFocus();
-            return;
-        }
+
         Zona z1=new Zona(1,"zona sur");
         Zona z2=new Zona(2,"zona norte");
         Zona z3=new Zona(3,"zona oeste");
@@ -179,8 +163,11 @@ public class LoginActivity extends AppCompatActivity {
                 return params;
             }
         };
+        if(TextoHelper.checkEmail(email)&&
+        TextoHelper.textVacio(pass,errorPass)){
+            VolleySingleton.getInstance(this).addToRequestQueue(loginRequest);
+        }
 
-        VolleySingleton.getInstance(this).addToRequestQueue(loginRequest);
 
 
     }
@@ -197,9 +184,7 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(new Intent(this,HomeActivity.class));
         return;
     }
-    private boolean checkEmail(String email) {
-        return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
-    }
+
 
     private StringRequest usuariosRequest =new StringRequest(Request.Method.POST, Api.URL,
             new Response.Listener<String>()

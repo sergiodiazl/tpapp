@@ -17,7 +17,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.activity.SubirMomentoActivity;
-import com.example.sergio_pieza.aplicaciontp.helper.SharedPrefHelper;
+
 import com.example.sergio_pieza.aplicaciontp.sql.Momento;
 
 /**
@@ -32,7 +32,6 @@ public class HomeF extends Fragment implements ListaMomentoF.OnMomentoSelectedLi
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //setHasOptionsMenu(true);//indica q tiene menu
-        FloatingActionButton subir;
         View view= inflater.inflate(R.layout.home_f, container, false);
         FragmentManager fm = getActivity().getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
@@ -40,22 +39,12 @@ public class HomeF extends Fragment implements ListaMomentoF.OnMomentoSelectedLi
         ft.commit();
 
 
-        subir=(FloatingActionButton)view.findViewById(R.id.botonASubirMomento);
-        subir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                aSubirMomento();
-            }
-        });
+
+
         return view;
     }
 
 
-    public void aSubirMomento(){
-
-        startActivity(new Intent(this.getActivity(),SubirMomentoActivity.class));
-        return;
-    }
 
     @Override
     public void onItemSelected(Momento m) {

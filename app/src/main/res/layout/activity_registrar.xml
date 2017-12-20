@@ -58,7 +58,7 @@
                     android:id="@+id/passwordRegistrar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@+String/passwordRegistrar"
+                    android:hint="@+string/passwordRegistrar"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />

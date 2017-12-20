@@ -57,6 +57,7 @@
 
                 card_view:srcCompat="@drawable/borrarcontacto" />
 
+
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

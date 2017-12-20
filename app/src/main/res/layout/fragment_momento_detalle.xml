@@ -3,17 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.sergio_pieza.aplicaciontp.fragment.MomentoDetalle">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none">
 
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="180" >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="40">
         <ImageView
             android:id="@+id/imagenMomentoDetalle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="20">
         <TextView
             android:id="@+id/cartelUsuarioMomentoDetalle"
             android:layout_width="wrap_content"
@@ -31,7 +46,12 @@
             android:layout_margin="@dimen/text_margin"
             android:layout_toRightOf="@+id/cartelUsuarioMomentoDetalle"
             android:textAppearance="?attr/textAppearanceListItem" />
-
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="20">
         <TextView
             android:id="@+id/cartelDescripcionMomentoDetalle"
             android:layout_width="wrap_content"
@@ -49,7 +69,12 @@
             android:layout_margin="@dimen/text_margin"
             android:layout_toRightOf="@+id/cartelDescripcionMomentoDetalle"
             android:textAppearance="?attr/textAppearanceListItem" />
-
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="20">
         <TextView
             android:id="@+id/cartelFechaMomentoDetalle"
             android:layout_width="wrap_content"
@@ -63,12 +88,16 @@
             android:id="@+id/fechaMomentoDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/descripcionMomentoDetalle"
-            android:layout_toRightOf="@+id/cartelFechaMomentoDetalle"
+            android:layout_margin="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem"
 
             />
-
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="20">
         <TextView
             android:id="@+id/cartelLatitudMomentoDetalle"
             android:layout_width="wrap_content"
@@ -82,11 +111,7 @@
             android:id="@+id/latitudMomentoDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/cartelLatitudMomentoDetalle"
-            android:layout_alignBottom="@+id/cartelLatitudMomentoDetalle"
-            android:layout_toEndOf="@+id/cartelLatitudMomentoDetalle"
-            android:layout_toRightOf="@+id/cartelLatitudMomentoDetalle"
-
+            android:layout_margin="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem" />
 
         <TextView
@@ -105,17 +130,19 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/cartelLongitudMomentoDetalle"
             android:layout_alignBottom="@+id/cartelLongitudMomentoDetalle"
-
-            android:layout_toEndOf="@+id/cartelLongitudMomentoDetalle"
-            android:layout_toRightOf="@+id/cartelLongitudMomentoDetalle"
+            android:layout_margin="@dimen/text_margin"
 
             android:textAppearance="?attr/textAppearanceListItem" />
-
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="20">
         <TextView
             android:id="@+id/cartelZonaMomentoDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cartelLatitudMomentoDetalle"
             android:layout_margin="@dimen/text_margin"
             android:text="@string/cartelZonaMomentoDetalle"
             android:textAppearance="?attr/textAppearanceListItem" />
@@ -124,24 +151,22 @@
             android:id="@+id/zonaMomentoDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/cartelZonaMomentoDetalle"
-            android:layout_alignBottom="@+id/cartelZonaMomentoDetalle"
-
-            android:layout_toEndOf="@+id/cartelLatitudMomentoDetalle"
-            android:layout_toRightOf="@+id/cartelLatitudMomentoDetalle"
+            android:layout_margin="@dimen/text_margin"
             android:textAppearance="?attr/textAppearanceListItem" />
-
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="40">
         <com.google.android.gms.maps.MapView
             android:id="@+id/mapaMomentoDetalle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/cartelZonaMomentoDetalle"
             android:layout_marginBottom="83dp"
             android:layout_marginEnd="77dp"
             android:layout_marginRight="77dp" />
-    </RelativeLayout>
-
+    </LinearLayout>
+    </LinearLayout>
+</ScrollView>
 </FrameLayout>

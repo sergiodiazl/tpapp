@@ -11,21 +11,24 @@ import android.support.design.widget.TabLayout;
 import com.example.sergio_pieza.aplicaciontp.R;
 import com.example.sergio_pieza.aplicaciontp.adapter.MyPagerAdapter;
 import com.example.sergio_pieza.aplicaciontp.fragment.HomeF;
+import com.example.sergio_pieza.aplicaciontp.fragment.ListaMisMomentosF;
 import com.example.sergio_pieza.aplicaciontp.fragment.ListaMomentoF;
 import com.example.sergio_pieza.aplicaciontp.helper.RecyclerViewClickListener;
+import com.example.sergio_pieza.aplicaciontp.helper.SharedPrefHelper;
 import com.example.sergio_pieza.aplicaciontp.sql.Momento;
 
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
-public class HomeActivity extends AppCompatActivity implements ListaMomentoF.OnMomentoSelectedListener {
+public class HomeActivity extends AppCompatActivity implements ListaMomentoF.OnMomentoSelectedListener ,ListaMisMomentosF.OnMomentoSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //SharedPrefHelper.getInstance(this).cargarLocale();
         setContentView(R.layout.activity_home);
         //terminar la otra actividad
-        LoginActivity.getInstance().finish();
+
         MyPagerAdapter myPagerAdapter =
                 new MyPagerAdapter(
                         getSupportFragmentManager(),this);
@@ -37,7 +40,7 @@ public class HomeActivity extends AppCompatActivity implements ListaMomentoF.OnM
          int[] iconos = {
                 R.drawable.home,
                 R.drawable.contactos,
-                 R.drawable.chat,
+                 R.drawable.imagen,
                 R.drawable.perfil
         };
         tabLayout.setupWithViewPager(viewPager);
