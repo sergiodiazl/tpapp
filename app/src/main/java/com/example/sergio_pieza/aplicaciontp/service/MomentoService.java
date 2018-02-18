@@ -66,7 +66,7 @@ public class MomentoService extends Service implements LocationListener{
         notificationManager =NotificationManagerCompat.from(this);
         notifInicio();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,this);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1,0,this);
         Bundle bundle=intent.getExtras();
          uId =bundle.getString("uId");
          zId =bundle.getString("zId");
@@ -84,7 +84,7 @@ public class MomentoService extends Service implements LocationListener{
         String texto=res.getString(R.string.noti1texto);
         NotificationCompat.Builder builder= new NotificationCompat.Builder(this).
                 setSmallIcon(R.drawable.notificacion).setLargeIcon(icono)
-                .setContentTitle(titulo).setContentText(texto);
+                .setContentTitle(titulo).setContentText(texto).setOngoing(true);
         notificationManager.notify(ntInicio,builder.build());
 
     }
@@ -96,7 +96,9 @@ public class MomentoService extends Service implements LocationListener{
         NotificationCompat.Builder builder= new NotificationCompat.Builder(this).
                 setSmallIcon(R.drawable.notificacion).setLargeIcon(icono)
                 .setContentTitle(titulo).setContentText(texto).setAutoCancel(true);
+        notificationManager.cancel(ntRequest);
         notificationManager.notify(ntFin,builder.build());
+
 
     }
     private void notiCoord(String mensaje) {
@@ -107,8 +109,8 @@ public class MomentoService extends Service implements LocationListener{
         NotificationCompat.Builder builder= new NotificationCompat.Builder(this).
                 setSmallIcon(R.drawable.notificacion).setLargeIcon(icono)
                 .setContentTitle(titulo).setContentText(texto).setAutoCancel(true);
-        notificationManager.notify(ntCoord,builder.build());
         notificationManager.cancel(ntInicio);
+        notificationManager.notify(ntCoord,builder.build());
     }
     private void notifRequest() {
         Resources res =this.getResources();
@@ -118,6 +120,7 @@ public class MomentoService extends Service implements LocationListener{
         NotificationCompat.Builder builder= new NotificationCompat.Builder(this).
                 setSmallIcon(R.drawable.notificacion).setLargeIcon(icono)
                 .setContentTitle(titulo).setContentText(texto).setAutoCancel(true);
+        notificationManager.cancel(ntCoord);
         notificationManager.notify(ntRequest,builder.build());
 
 
@@ -130,8 +133,8 @@ public class MomentoService extends Service implements LocationListener{
         NotificationCompat.Builder builder= new NotificationCompat.Builder(this).
                 setSmallIcon(R.drawable.notificacion).setLargeIcon(icono)
                 .setContentTitle(titulo).setContentText(texto).setAutoCancel(true);
+        notificationManager.cancel(ntRequest);
         notificationManager.notify(ntError,builder.build());
-         notificationManager.cancel(ntRequest);
     }
 
 
@@ -235,6 +238,7 @@ public class MomentoService extends Service implements LocationListener{
 
     @Override
     public void onLocationChanged(Location location) {
+        System.out.println("location");
         if(location!=null){
             ubicacion=location;
             latitud=String.valueOf(ubicacion.getLatitude());
@@ -257,7 +261,8 @@ public class MomentoService extends Service implements LocationListener{
     @SuppressLint("MissingPermission")
     @Override
     public void onProviderEnabled(String provider) {
-            ubicacion=locationManager.getLastKnownLocation(provider);
+        System.out.println(provider);
+        ubicacion = locationManager.getLastKnownLocation(provider);
     }
 
     @Override
