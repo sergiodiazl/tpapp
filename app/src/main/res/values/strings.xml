@@ -24,7 +24,9 @@
     <string name="title_activity_momento_detalle">MomentoDetalle</string>
     <!-- actividad login-->
     <string name="emailRegistrar">Email</string>
+    <string name="passwordReg">Contraseña</string>
     <string name="passwordRegistrar">Contraseña</string>
+    <string name="password2Reg">Repita la contraseña</string>
     <string name="password2Registrar">Repita la contraseña</string>
 
     <!-- actividad subir momento-->

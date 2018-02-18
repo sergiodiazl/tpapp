@@ -58,48 +58,49 @@
                     android:id="@+id/passwordRegistrar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@+string/passwordRegistrar"
+                    android:hint="@string/passwordReg"
                     android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <EditText
-                android:id="@+id/password2Registrar"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:singleLine="true" />
-            <Spinner
-                android:id="@+id/spinnerRegistrar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
+                android:layout_height="match_parent">
+                <EditText
+                    android:id="@+id/password2Registrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/password2Reg"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+                <Spinner
+                    android:id="@+id/spinnerRegistrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
 
-            </Spinner>
-            <Button
-                android:id="@+id/botonRegistrar"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="registrar tu cuenta"
-                android:background="@color/colorAccent"
-                android:textStyle="bold" />
-            <Button
-                android:id="@+id/botonALogin"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="tienes cuenta?inicia sesion"
-                android:background="@color/colorAccent"
-                android:textStyle="bold" />
-        </android.support.design.widget.TextInputLayout>
+                </Spinner>
+                <Button
+                    android:id="@+id/botonRegistrar"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="registrar tu cuenta"
+                    android:background="@color/colorAccent"
+                    android:textStyle="bold" />
+                <Button
+                    android:id="@+id/botonALogin"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="tienes cuenta?inicia sesion"
+                    android:background="@color/colorAccent"
+                    android:textStyle="bold" />
+            </android.support.design.widget.TextInputLayout>
 
 
         </LinearLayout>

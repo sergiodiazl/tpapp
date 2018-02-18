@@ -26,6 +26,7 @@
     <string name="passwordRegistrar">Password</string>
     <string name="password2Registrar">Repeat password</string>
 
+
     <!-- actividad subir momento-->
     <string name="dSubirImagen">Write a description(optional)</string>
     <string name="botonSubirImagen">Upload moment</string>
